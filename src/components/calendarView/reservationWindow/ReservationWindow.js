@@ -7,6 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import {createNewReservation} from "../calendarQueryService/CalendarQueryService"
 
 import './reservationWindow.css'
+import ExitButton from "../../utils/exitButton/exitButton";
 
 class ReservationWindow extends Component {
     constructor(props) {
@@ -52,6 +53,7 @@ class ReservationWindow extends Component {
         return (
             <div className="reservationWindow">
                 <form onSubmit={this.handleSubmit} className="reservationForm">
+                    <ExitButton className="reservationExit" onClick={() => this.props.closeReservationWindow()}/>
                     <div>
                         <label className="reservationFormLabel">FirstName:</label>
                         <input type="text" value={this.state.fName}

@@ -42,7 +42,7 @@ class ReservationRect extends Component {
         }
     }
 
-    static calcLeft(day,id) {
+    calcLeft(day,id) {
         const rect = document.getElementById("calendarRect_"+id+"_"+day);
         if(rect) {
             const padding = rect.offsetWidth*0.5;
@@ -51,7 +51,7 @@ class ReservationRect extends Component {
         return 0
     }
 
-    static calcTop(day,id) {
+    calcTop(day,id) {
         const rect = document.getElementById("calendarRect_"+id+"_"+day);
         if(rect) {
             const padding = rect.offsetHeight*0.2;

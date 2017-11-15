@@ -2,12 +2,12 @@
     display: inline-block;
     vertical-align: top;
     width: 10rem;
-    margin-right: 1rem;
+    margin-top: 3.7rem;
 }
 
 .calendarSide {
     display: inline-block;
-    width: calc(100% - 11rem);
+    width: calc(100% - 10rem);
     position: relative;
     overflow-x: auto;
 }

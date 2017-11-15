@@ -1,6 +1,11 @@
-.room{
+.roomOuter{
+    padding: 0.5rem;
+}
+
+.roomInner{
     width: 100%;
-    height: 5rem;
-    background-color: green;
+    height: 4rem;
+    background-color: grey;
     display: inline-block;
+    border-radius: 3px;
 }

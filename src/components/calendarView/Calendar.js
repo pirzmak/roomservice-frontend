@@ -16,6 +16,7 @@ class Calendar extends Component {
         };
 
         this.setReservationWindow = this.setReservationWindow.bind(this);
+        this.closeReservationWindow = this.closeReservationWindow.bind(this);
     }
 
     setReservationWindow(date) {
@@ -23,6 +24,10 @@ class Calendar extends Component {
             {reservationWindow: true,
              clickedDate: date}
         );
+    }
+
+    closeReservationWindow() {
+        this.setState({reservationWindow: false});
     }
 
     render() {
@@ -34,7 +39,7 @@ class Calendar extends Component {
                 <div className="calendarSide">
                     <CalendarGrid showNewReservationForm={this.setReservationWindow} selectedDate={this.state.clickedDate}/>
                 </div>
-                {this.state.reservationWindow ? <ReservationWindow startDay={this.state.clickedDate}/> : null}
+                {this.state.reservationWindow ? <ReservationWindow startDay={this.state.clickedDate} closeReservationWindow={this.closeReservationWindow}/> : null}
             </div>
         );
     }
