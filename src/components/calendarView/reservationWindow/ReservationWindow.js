@@ -7,7 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import {createNewReservation} from "../calendarQueryService/CalendarQueryService"
 
 import './reservationWindow.css'
-import ExitButton from "../../utils/exitButton/exitButton";
+import ExitButton from "../../utils/exitButton/ExitButton";
 
 class ReservationWindow extends Component {
     constructor(props) {
