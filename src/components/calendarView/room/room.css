@@ -1,8 +1,8 @@
-.roomOuter{
+.roomOuter {
     padding: 0.5rem;
 }
 
-.roomInner{
+.roomInner {
     width: 100%;
     height: 4rem;
     background-color: grey;
