@@ -11,7 +11,7 @@ class NextPrevButton extends Component {
     return (
       <span className="nextprevButton" onClick={() => this.props.onClick()}>
                 {this.props.left ? "<<" : ">>"}
-            </span>
+      </span>
     );
   }
 }

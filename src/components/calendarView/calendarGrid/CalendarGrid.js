@@ -5,9 +5,10 @@ import CalendarRect from '../calendarRect/CalendarRect'
 import ReservationRect from '../reservationRect/ReservationRect'
 import NextPrevButton from '../../utils/nextprevButton/NextPrevButton'
 
-import {getAllReservations} from "../calendarQueryService/CalendarQueryService"
+import {getAllReservations} from "../calendarQueryService/ReservationsQueryService"
 
 import './calendarGrid.css'
+
 
 
 class CalendarGrid extends Component {
@@ -16,18 +17,14 @@ class CalendarGrid extends Component {
     this.state = {
       reservations: [],
       reservationsViewModel: [],
-      rooms: [1, 2, 3, 4, 5],
+      rooms: [],
       selectedDate: now()
     };
   }
 
   componentDidMount() {
     getAllReservations((data) => {
-      this.setState(
-        {
-          reservations: data
-        }
-      );
+      this.setState({reservations: data});
       this.filterReservations();
     });
   }
@@ -80,7 +77,7 @@ class CalendarGrid extends Component {
               </th>
             })}
           </tr>
-          {this.state.rooms.map((x, j) => {
+          {this.props.rooms.map((x, j) => {
               return <tr key={j} className="calendarRow">
                 {[...Array(this.state.selectedDate.daysInMonth())].map((x, i) =>
                   <th key={i} id={"calendarRect_" + j + "_" + (i + 1)}>
@@ -95,9 +92,9 @@ class CalendarGrid extends Component {
           </tbody>
         </table>
 
-        {this.state.reservationsViewModel.map((r, i) => <ReservationRect key={r.aggregateId.id} reservation={r.aggregate}
+        {this.props.rooms.length > 0 ? this.state.reservationsViewModel.map((r, i) => <ReservationRect key={r.aggregateId.id} reservation={r.aggregate}
                                                                 aggregateId={r.aggregteId}
-                                                                aggregateVersion={r.aggegateVersion}/>)}
+                                                                aggregateVersion={r.aggegateVersion}/>) : null}
 
       </div>
     );

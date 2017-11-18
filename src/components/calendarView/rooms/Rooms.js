@@ -12,7 +12,7 @@ class Rooms extends Component {
   render() {
     return (
       <div className="rooms">
-        {[...Array(5)].map((x, i) =>
+        {this.props.rooms.map((x, i) =>
           <Room key={i}/>
         )}
       </div>

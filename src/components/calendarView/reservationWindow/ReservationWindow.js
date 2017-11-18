@@ -4,7 +4,7 @@ import {now} from '../../utils/index'
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import {createNewReservation} from "../calendarQueryService/CalendarQueryService"
+import {createNewReservation} from "../calendarQueryService/ReservationsQueryService"
 
 import './reservationWindow.css'
 import ExitButton from "../../utils/exitButton/ExitButton";
