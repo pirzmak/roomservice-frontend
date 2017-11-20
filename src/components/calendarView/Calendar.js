@@ -15,11 +15,13 @@ class Calendar extends Component {
     this.state = {
       reservationWindow: false,
       clickedDate: now(),
-      rooms: []
+      rooms: [],
+      newReservations: []
     };
 
     this.setReservationWindow = this.setReservationWindow.bind(this);
     this.closeReservationWindow = this.closeReservationWindow.bind(this);
+    this.addNewReservation = this.addNewReservation.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +43,18 @@ class Calendar extends Component {
     this.setState({reservationWindow: false});
   }
 
+  addNewReservation(reservation, tmp) {
+    this.setState({newReservations: this.state.newReservations.push({aggregateId: {id: tmp}, aggegateVersion: 1, aggregate: reservation})});
+    this.closeReservationWindow();
+  }
+
+  addNewReservationConfirm(id, tmp) {
+    this.setState({
+      newReservations: this.state.newReservations.map(r =>
+        r.aggregateId.id === tmp ? {aggregateId: {id: id}, aggegateVersion: r.aggegateVersion, aggregate: r.aggregate} : r)});
+    this.closeReservationWindow();
+  }
+
   render() {
     return (
       <div className="calendar">
@@ -48,10 +62,15 @@ class Calendar extends Component {
           <Rooms rooms={this.state.rooms}/>
         </div>
         <div className="calendarSide">
-          <CalendarGrid showNewReservationForm={this.setReservationWindow} selectedDate={this.state.clickedDate} rooms={this.state.rooms}/>
+          <CalendarGrid showNewReservationForm={this.setReservationWindow}
+                        selectedDate={this.state.clickedDate}
+                        newReservations={this.state.newReservations}
+                        rooms={this.state.rooms}/>
         </div>
         {this.state.reservationWindow ? <ReservationWindow startDay={this.state.clickedDate}
-                                                           closeReservationWindow={this.closeReservationWindow}/> : null}
+                                                           closeReservationWindow={this.closeReservationWindow}
+                                                           addNewReservation={this.addNewReservation}
+                                                           addNewReservationConfirm={this.addNewReservationConfirm}/> : null}
       </div>
     );
   }

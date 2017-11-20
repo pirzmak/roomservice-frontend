@@ -16,10 +16,18 @@ class CalendarGrid extends Component {
     super(props);
     this.state = {
       reservations: [],
+      newReservations: this.props.newReservations,
       reservationsViewModel: [],
       rooms: [],
       selectedDate: now()
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.newReservations !== this.props.newReservations) {
+      this.setState({newReservations: this.props.newReservations});
+      this.filterReservations();
+    }
   }
 
   componentDidMount() {
@@ -32,7 +40,7 @@ class CalendarGrid extends Component {
   filterReservations() {
     this.setState(
       {
-        reservationsViewModel: this.state.reservations.filter(d => {
+        reservationsViewModel: this.state.reservations.concat(this.state.newReservations).filter(d => {
           return moment(d.aggregate.from, "YYYY-MM-DD").isAfter(getMonthDay(this.state.selectedDate, 1))
             && moment(d.aggregate.to, "YYYY-MM-DD").isBefore(this.state.selectedDate.endOf('month'))
         })

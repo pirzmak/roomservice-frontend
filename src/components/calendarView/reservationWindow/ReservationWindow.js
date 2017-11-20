@@ -44,7 +44,9 @@ class ReservationWindow extends Component {
             roomId: {id: Number(this.state.roomId)},
             discount: null
         };
-        createNewReservation(reservation, () => {});
+        const tmp = Math.random();
+        createNewReservation(reservation, (data) => {this.props.addNewReservationConfirm(data.id.id,tmp)});
+        this.props.addNewReservation(reservation,tmp);
         event.preventDefault();
     }
 
