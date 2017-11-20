@@ -1,27 +1,32 @@
-.calendarGrid {
-
-}
-
 .calendarTable {
-    border: 1px solid black;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box; /* Firefox, other Gecko */
-    box-sizing: border-box; /* Opera/IE 8+ */
-    width: 100%;
-}
+  border: 1px solid lightgray;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+  width: 100%;
+  border-collapse: collapse; }
+
+.weekDay {
+  background-color: #d3d3d354; }
+
+.calendarCell {
+  border-right: 1px solid lightgray; }
 
 .calendarMonth {
-    text-align: center;
-    padding: 0.5rem;
-}
+  text-align: center;
+  padding: 0.5rem; }
 
 .calendarRow {
-    width: max-content;
-}
+  width: max-content;
+  border-bottom: 1px solid lightgray; }
+  .calendarRow:last-child {
+    border-bottom: none; }
 
 .block {
-    width: 2.5rem;
-    height: 2rem;
-    background-color: red;
-    position: absolute;
-}
+  width: 2.5rem;
+  height: 2rem;
+  background-color: red;
+  position: absolute; }

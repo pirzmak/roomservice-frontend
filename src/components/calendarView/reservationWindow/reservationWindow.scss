@@ -1,0 +1,27 @@
+.reservationWindow {
+    position: fixed;
+    top: 3rem;
+    width: calc(100% - 44rem);
+    padding: 10rem 20rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    vertical-align: middle;
+    text-align: -webkit-center;
+}
+
+.reservationForm {
+    background-color: white;
+    padding: 1rem;
+    position: relative;
+    width: 20rem;
+    text-align: initial;
+}
+
+.reservationFormLabel {
+    display: inline-block;
+    width: 5rem;
+    margin-right: 0.5rem;
+}
+
+.datePicker {
+    display: inline-block;
+}

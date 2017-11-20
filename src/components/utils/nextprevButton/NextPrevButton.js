@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import './nextprev.css'
+import './nextprev.scss'
 
 class NextPrevButton extends Component {
   constructor(props) {

@@ -1,0 +1,14 @@
+@import "../../../colors.scss";
+
+
+.roomOuter {
+    padding: 0.7rem;
+}
+
+.roomInner {
+    width: 100%;
+    height: 4rem;
+    background-color: $main_mint;
+    display: inline-block;
+    border-radius: 3px;
+}

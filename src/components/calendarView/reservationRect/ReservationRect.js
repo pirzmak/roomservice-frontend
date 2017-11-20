@@ -3,6 +3,8 @@ import {ItemTypes} from '../../Constants';
 import {DragSource} from 'react-dnd';
 import PersonInfo from "../../utils/personInfo/PersonInfo";
 
+import "./reservationrect.css"
+
 const reservationSource = {
   beginDrag(props) {
     return {};
@@ -54,7 +56,8 @@ class ReservationRect extends Component {
     this.setState({
       left: this.calcLeft(new Date(this.state.reservation.from).getDate(), this.state.reservation.roomId.id),
       top: this.calcTop(new Date(this.state.reservation.from).getDate(), this.state.reservation.roomId.id),
-      width: this.calcWidth(new Date(this.state.reservation.from).getDate(), new Date(this.state.reservation.to).getDate(), this.state.reservation.roomId.id)
+      width: this.calcWidth(new Date(this.state.reservation.from).getDate(), new Date(this.state.reservation.to).getDate(), this.state.reservation.roomId.id),
+      height: this.calcHeight(new Date(this.state.reservation.from).getDate(), this.state.reservation.roomId.id)
     })
   }
 
@@ -71,10 +74,15 @@ class ReservationRect extends Component {
   calcTop(day, id) {
     const rect = document.getElementById("calendarRect_" + id + "_" + day);
     if (rect) {
-      const padding = rect.offsetHeight * 0.2;
+      const padding = rect.offsetHeight * 0.05;
       return rect.offsetTop - rect.offsetParent.offsetTop + padding;
     }
     return 0
+  }
+
+  calcHeight(day, id) {
+    const rect = document.getElementById("calendarRect_" + id + "_" + day);
+    return rect.offsetHeight * 0.9
   }
 
   calcWidth(from, to, id) {
@@ -84,15 +92,10 @@ class ReservationRect extends Component {
   render() {
     const {connectDragSource, isDragging} = this.props;
     return connectDragSource(
-      <div style={{
+      <div className="reservationRect" style={{
         opacity: isDragging ? 0.5 : 1,
-        fontSize: 25,
-        fontWeight: 'bold',
-        cursor: 'move',
         width: this.state.width,
-        height: 58,
-        backgroundColor: 'red',
-        position: 'absolute',
+        height: this.state.height,
         top: this.state.top,
         left: this.state.left
       }}><PersonInfo personInfo={this.props.reservation.clientInfo}/>

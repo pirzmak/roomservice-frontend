@@ -1,7 +1,10 @@
+@import "../colors.scss";
+
 .headerComponent {
   position: fixed;
   height: 3rem;
-  background: #cccbc6;
+  background: $main_powder;
   width: 100%;
   top: 0;
-  z-index: 10; }
+  z-index: 10;
+}

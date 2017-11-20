@@ -11,7 +11,7 @@ class Room extends Component {
     return (
       <div className="roomOuter">
         <div className="roomInner">
-
+          {this.props.id}
         </div>
       </div>
     );

@@ -1,11 +1,9 @@
 .roomOuter {
-    padding: 0.5rem;
-}
+  padding: 0.7rem; }
 
 .roomInner {
-    width: 100%;
-    height: 4rem;
-    background-color: grey;
-    display: inline-block;
-    border-radius: 3px;
-}
+  width: 100%;
+  height: 4rem;
+  background-color: #C7D8C6;
+  display: inline-block;
+  border-radius: 3px; }

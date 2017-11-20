@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import './personInfo.css'
+import './personInfo.scss'
 
 class PersonInfo extends Component {
   constructor(props) {

@@ -11,7 +11,7 @@ class CalendarRect extends Component {
   render() {
     return (
       <div className="calendarRect" onClick={() => this.props.handleClick(this.props.day)}>
-        <div className="calendarRectContent">{this.props.day.format("DD")}
+        <div className="calendarRectContent">
         </div>
       </div>
     );

@@ -1,0 +1,13 @@
+.roomSide {
+    display: inline-block;
+    vertical-align: top;
+    width: 10rem;
+    margin-top: 4.7rem;
+}
+
+.calendarSide {
+    display: inline-block;
+    width: calc(100% - 10rem);
+    position: relative;
+    overflow-x: auto;
+}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import './exitButton.css'
+import './exitButton.scss'
 
 class ExitButton extends Component {
   constructor(props) {
