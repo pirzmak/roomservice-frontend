@@ -6,6 +6,7 @@ import Rooms from './rooms/Rooms'
 import ReservationWindow from './reservationWindow/ReservationWindow'
 
 import {getAllRooms} from "./calendarQueryService/RoomsQueryService";
+import {createNewReservation} from "./calendarQueryService/ReservationsQueryService"
 
 import './calendar.css'
 
@@ -16,12 +17,14 @@ class Calendar extends Component {
       reservationWindow: false,
       clickedDate: now(),
       rooms: [],
-      newReservations: []
+      newReservations: [],
+      ss: []
     };
 
     this.setReservationWindow = this.setReservationWindow.bind(this);
     this.closeReservationWindow = this.closeReservationWindow.bind(this);
     this.addNewReservation = this.addNewReservation.bind(this);
+    this.addNewReservationConfirm = this.addNewReservationConfirm.bind(this);
   }
 
   componentDidMount() {
@@ -44,7 +47,10 @@ class Calendar extends Component {
   }
 
   addNewReservation(reservation, tmp) {
-    this.setState({newReservations: this.state.newReservations.push({aggregateId: {id: tmp}, aggegateVersion: 1, aggregate: reservation})});
+    const reservations = this.state.newReservations;
+    reservations.push({aggregateId: {id: tmp}, aggegateVersion: 1, aggregate: reservation});
+    this.setState({newReservations: reservations});
+    createNewReservation(reservation, (data) => {this.addNewReservationConfirm(data.id.id, tmp)});
     this.closeReservationWindow();
   }
 
@@ -52,25 +58,23 @@ class Calendar extends Component {
     this.setState({
       newReservations: this.state.newReservations.map(r =>
         r.aggregateId.id === tmp ? {aggregateId: {id: id}, aggegateVersion: r.aggegateVersion, aggregate: r.aggregate} : r)});
-    this.closeReservationWindow();
   }
 
   render() {
     return (
       <div className="calendar">
         <div className="roomSide">
-          <Rooms rooms={this.state.rooms}/>
+          <Rooms rooms={this.state.rooms.sort((a,b) => a.aggregateId.id - b.aggregateId.id)}/>
         </div>
         <div className="calendarSide">
           <CalendarGrid showNewReservationForm={this.setReservationWindow}
                         selectedDate={this.state.clickedDate}
-                        newReservations={this.state.newReservations}
+                        newReservations={[]}
                         rooms={this.state.rooms}/>
         </div>
         {this.state.reservationWindow ? <ReservationWindow startDay={this.state.clickedDate}
                                                            closeReservationWindow={this.closeReservationWindow}
-                                                           addNewReservation={this.addNewReservation}
-                                                           addNewReservationConfirm={this.addNewReservationConfirm}/> : null}
+                                                           addNewReservation={this.addNewReservation}/> : null}
       </div>
     );
   }

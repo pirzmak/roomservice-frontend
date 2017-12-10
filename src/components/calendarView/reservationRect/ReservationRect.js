@@ -25,25 +25,31 @@ class ReservationRect extends Component {
     this.state = {
       aggregateId: this.props.aggregateId,
       aggregateVersion: this.props.aggregateVersion,
-      reservation: this.props.reservation
+      reservation: this.props.reservation,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.reservation !== this.props.reservation) {
       this.setState({reservation: this.props.reservation});
+      this.setPositions();
     }
     if (nextProps.aggregateId !== this.props.aggregateId) {
       this.setState({aggregateId: this.props.aggregateId});
+      this.setPositions();
     }
     if (nextProps.aggregateVersion !== this.props.aggregateVersion) {
       this.setState({aggregateVersion: this.props.aggregateVersion});
+      this.setPositions();
     }
+  }
+
+  componentWillMount(){
+    this.setPositions();
   }
 
   componentDidMount() {
     window.addEventListener('resize', () => this.setPositions());
-
     this.setPositions();
   }
 
@@ -54,10 +60,10 @@ class ReservationRect extends Component {
   setPositions(){
     if(this.state)
     this.setState({
-      left: this.calcLeft(new Date(this.state.reservation.from).getDate(), this.state.reservation.roomId.id),
-      top: this.calcTop(new Date(this.state.reservation.from).getDate(), this.state.reservation.roomId.id),
-      width: this.calcWidth(new Date(this.state.reservation.from).getDate(), new Date(this.state.reservation.to).getDate(), this.state.reservation.roomId.id),
-      height: this.calcHeight(new Date(this.state.reservation.from).getDate(), this.state.reservation.roomId.id)
+      left: this.calcLeft(this.state.reservation.from, this.state.reservation.roomId.id),
+      top: this.calcTop(this.state.reservation.from, this.state.reservation.roomId.id),
+      width: this.calcWidth(this.state.reservation.from, this.state.reservation.to, this.state.reservation.roomId.id),
+      height: this.calcHeight(this.state.reservation.from, this.state.reservation.roomId.id)
     })
   }
 
@@ -65,7 +71,7 @@ class ReservationRect extends Component {
   calcLeft(day, id) {
     const rect = document.getElementById("calendarRect_" + id + "_" + day);
     if (rect) {
-      const padding = rect.offsetWidth * 0.5;
+      const padding = rect.offsetWidth * 0.5 + 3;
       return rect.offsetLeft - rect.offsetParent.offsetLeft + padding;
     }
     return 0
@@ -82,11 +88,13 @@ class ReservationRect extends Component {
 
   calcHeight(day, id) {
     const rect = document.getElementById("calendarRect_" + id + "_" + day);
-    return rect.offsetHeight * 0.9
+    if (rect)
+      return rect.offsetHeight * 0.9;
+    return 0;
   }
 
   calcWidth(from, to, id) {
-    return this.calcLeft(to, id) - this.calcLeft(from, id);
+    return this.calcLeft(to, id) - this.calcLeft(from, id) - 3;
   }
 
   render() {

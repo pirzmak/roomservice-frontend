@@ -99,7 +99,7 @@ class CalendarGrid extends Component {
           {this.props.rooms.map((room, j) => {
               return <tr key={j} className="calendarRow">
                 {[...Array(this.state.selectedDate.daysInMonth())].map((x, i) =>
-                  <th key={i} className={"calendarCell calendarDay " + (this.isWeek(i) ? "weekDay" : "")} id={"calendarRect_" + room.aggregateId.id + "_" + (i + 1)}>
+                  <th key={i} className={"calendarCell calendarDay " + (this.isWeek(i) ? "weekDay" : "")} id={"calendarRect_" + room.aggregateId.id + "_" + getMonthDay(this.state.selectedDate, i + 1).format("YYYY-MM-DD")}>
                     <CalendarRect key={i}
                                   handleClick={this.props.showNewReservationForm}
                                   day={getMonthDay(this.state.selectedDate, i + 1)}/>
@@ -111,9 +111,10 @@ class CalendarGrid extends Component {
           </tbody>
         </table>
 
-        {this.props.rooms.length > 0 ? this.state.reservationsViewModel.map((r, i) => <ReservationRect key={r.aggregateId.id} reservation={r.aggregate}
-                                                                                                        aggregateId={r.aggregteId}
-                                                                                                        aggregateVersion={r.aggegateVersion}/>) : null}
+        {this.props.rooms.length > 0 ? this.state.reservationsViewModel.map((r, i) => <ReservationRect key={r.aggregateId.id}
+                                                                                                       reservation={r.aggregate}
+                                                                                                       aggregateId={r.aggregteId}
+                                                                                                       aggregateVersion={r.aggegateVersion}/>) : null}
 
       </div>
     );

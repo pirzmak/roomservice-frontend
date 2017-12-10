@@ -7,3 +7,10 @@
   background-color: #C7D8C6;
   display: inline-block;
   border-radius: 3px; }
+
+.roomInfo {
+  padding: 0.5rem; }
+
+.roomLabel {
+  font-size: 0.8rem;
+  display: block; }

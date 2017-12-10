@@ -4,8 +4,6 @@ import {now} from '../../utils/index'
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import {createNewReservation} from "../calendarQueryService/ReservationsQueryService"
-
 import './reservationWindow.css'
 import ExitButton from "../../utils/exitButton/ExitButton";
 
@@ -45,7 +43,6 @@ class ReservationWindow extends Component {
             discount: null
         };
         const tmp = Math.random();
-        createNewReservation(reservation, (data) => {this.props.addNewReservationConfirm(data.id.id,tmp)});
         this.props.addNewReservation(reservation,tmp);
         event.preventDefault();
     }

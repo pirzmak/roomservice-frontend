@@ -13,7 +13,7 @@ class Rooms extends Component {
     return (
       <div className="rooms">
         {this.props.rooms.map((x, i) =>
-          <Room key={i} id={x.aggregateId.id}/>
+          <Room key={i} room={x}/>
         )}
       </div>
     );
