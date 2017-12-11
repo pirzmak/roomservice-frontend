@@ -4,6 +4,7 @@ import {now} from '../utils/index'
 import CalendarGrid from './calendarGrid/CalendarGrid'
 import Rooms from './rooms/Rooms'
 import ReservationWindow from './reservationWindow/ReservationWindow'
+import RoomConfirmWindow from './roomConfirmWindow/RoomConfirmWindow'
 
 import {getAllRooms} from "./calendarQueryService/RoomsQueryService";
 import {createNewReservation} from "./calendarQueryService/ReservationsQueryService"
@@ -18,13 +19,16 @@ class Calendar extends Component {
       clickedDate: now(),
       rooms: [],
       newReservations: [],
-      ss: []
+      roomConfirmWindow: false,
+      selectedRoom: -1,
     };
 
-    this.setReservationWindow = this.setReservationWindow.bind(this);
+    this.openReservationWindow = this.openReservationWindow.bind(this);
     this.closeReservationWindow = this.closeReservationWindow.bind(this);
     this.addNewReservation = this.addNewReservation.bind(this);
     this.addNewReservationConfirm = this.addNewReservationConfirm.bind(this);
+
+    this.openRoomConfirmWindow = this.openRoomConfirmWindow.bind(this);
   }
 
   componentDidMount() {
@@ -33,10 +37,11 @@ class Calendar extends Component {
     });
   }
 
-  setReservationWindow(date) {
+  openReservationWindow(date) {
     this.setState(
       {
         reservationWindow: true,
+        roomConfirmWindow: false,
         clickedDate: date
       }
     );
@@ -44,6 +49,20 @@ class Calendar extends Component {
 
   closeReservationWindow() {
     this.setState({reservationWindow: false});
+  }
+
+  openRoomConfirmWindow(roomId) {
+    this.setState(
+      {
+        roomConfirmWindow: true,
+        reservationWindow: false,
+        selectedRoom: roomId
+      }
+    );
+  }
+
+  closeRoomConfirmWindow() {
+    this.setState({roomConfirmWindow: false});
   }
 
   addNewReservation(reservation, tmp) {
@@ -64,15 +83,20 @@ class Calendar extends Component {
     return (
       <div className="calendar">
         <div className="roomSide">
-          <Rooms rooms={this.state.rooms.sort((a,b) => a.aggregateId.id - b.aggregateId.id)}/>
+          <Rooms rooms={this.state.rooms.sort((a,b) => a.aggregateId.id - b.aggregateId.id)}
+                 openRoomConfrmWindow={this.openRoomConfirmWindow}/>
         </div>
         <div className="calendarSide">
-          <CalendarGrid showNewReservationForm={this.setReservationWindow}
+          <CalendarGrid showNewReservationForm={this.openReservationWindow}
                         selectedDate={this.state.clickedDate}
                         newReservations={[]}
                         rooms={this.state.rooms}/>
         </div>
         {this.state.reservationWindow ? <ReservationWindow startDay={this.state.clickedDate}
+                                                           closeReservationWindow={this.closeReservationWindow}
+                                                           addNewReservation={this.addNewReservation}/> : null}
+
+        {this.state.roomConfirmWindow ? <RoomConfirmWindow startDay={this.state.clickedDate}
                                                            closeReservationWindow={this.closeReservationWindow}
                                                            addNewReservation={this.addNewReservation}/> : null}
       </div>

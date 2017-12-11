@@ -1,0 +1,28 @@
+.roomConfirmationWindow {
+  position: fixed;
+  top: 3rem;
+  right: 0;
+  height: calc(100% - 3rem);
+  width: 30rem;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.reservationForm {
+  background-color: white;
+  padding: 1rem;
+  position: relative;
+  width: 20rem;
+  text-align: initial;
+}
+
+.roomConfirmationFormLabel {
+  display: inline-block;
+  width: 5rem;
+  margin-right: 0.5rem;
+  vertical-align: top;
+}
+
+.textAreaConfirmationRoom {
+  resize: none;
+}

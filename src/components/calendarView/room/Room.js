@@ -15,7 +15,7 @@ class Room extends Component {
 
   render() {
     return (
-      <div className="roomOuter">
+      <div className="roomOuter" onClick={() => this.props.handleClick(this.props.room)}>
         <div className="roomInner">
           <div className="roomInfo">
             <span className="roomLabel">Id: {this.getRoomId(this.props.room)}</span>
