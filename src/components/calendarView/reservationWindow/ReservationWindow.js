@@ -52,15 +52,21 @@ class ReservationWindow extends Component {
     return (
       <div className="reservationWindow">
         <form onSubmit={this.handleSubmit} className="reservationForm">
-          <ExitButton className="reservationExit" onClick={() => this.props.closeReservationWindow()}/>
+          <div className="reservationFormHeader">
+            <ExitButton className="reservationExit" onClick={() => this.props.closeReservationWindow()}/>
+            <span className="reservationFormHeaderLabel">Add new reservation</span>
+          </div>
+          <div className="reservationFormContent">
           <div>
             <label className="reservationFormLabel">FirstName:</label>
             <input type="text" value={this.state.fName}
+                   className="reservationFormInput"
                    onChange={(event) => this.setState({fName: event.target.value})}/>
           </div>
           <div>
             <label className="reservationFormLabel">LastName:</label>
             <input type="text" value={this.state.lName}
+                   className="reservationFormInput"
                    onChange={(event) => this.setState({lName: event.target.value})}/>
           </div>
           <div>
@@ -68,13 +74,14 @@ class ReservationWindow extends Component {
             <div className="datePicker">
               <DatePicker
                 selected={this.props.startDay}
+                className="reservationFormDate"
                 onChange={(date) => this.setState({startDate: date})}/>
             </div>
           </div>
           <div>
             <label className="reservationFormLabel">Do:</label>
             <div className="datePicker">
-              <DatePicker className="datePicker"
+              <DatePicker className="reservationFormDate"
                           selected={this.state.endDate}
                           onChange={(date) => this.setState({endDate: date})}/>
             </div>
@@ -82,9 +89,11 @@ class ReservationWindow extends Component {
           <div>
             <label className="reservationFormLabel">Room:</label>
             <input type="number" value={this.state.roomId}
+                   className="reservationFormInput"
                    onChange={(event) => this.setState({roomId: event.target.value})}/>
           </div>
-          <input type="submit" value="Submit"/>
+          <input type="submit" value="Submit" className="reservationFormSubmit btn btn-default"/>
+          </div>
         </form>
       </div>
     );

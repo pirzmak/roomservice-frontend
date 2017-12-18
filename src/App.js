@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div className="">
           <Route exact path="/" component={ReservationPage}/>
         </div>
       </Router>

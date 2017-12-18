@@ -13,7 +13,8 @@
   background-color: #d3d3d354; }
 
 .calendarCell {
-  border-right: 1px solid lightgray; }
+  border-right: 1px solid lightgray;
+  text-align: center; }
 
 .calendarMonth {
   text-align: center;

@@ -1,27 +1,62 @@
+@import "../../../colors.scss";
+
 .reservationWindow {
     position: fixed;
     top: 3rem;
-    width: calc(100% - 44rem);
+    width: calc(100% - 2rem);
     padding: 10rem 20rem;
     background-color: rgba(0, 0, 0, 0.5);
     vertical-align: middle;
     text-align: -webkit-center;
 }
 
+.reservationFormHeader {
+    background-color: $main_gray;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+    padding: 0.5rem;
+}
+
+.reservationFormContent{
+  margin-top: 3rem;
+}
+
 .reservationForm {
     background-color: white;
     padding: 1rem;
     position: relative;
-    width: 20rem;
+    width: 40rem;
     text-align: initial;
 }
 
 .reservationFormLabel {
     display: inline-block;
-    width: 5rem;
+    width: 10rem;
     margin-right: 0.5rem;
+}
+
+.reservationFormInput {
+  width: calc(100% - 11rem);
+  border: 1px solid #A9B7C0;
+  padding: 0.4em 0.5em;
+  margin-bottom: 0.2rem;
+  position: relative;
+  text-align: initial;
+}
+
+.reservationFormDate {
+  padding: 0.4em 0.5em;
+  margin-bottom: 0.2rem;
 }
 
 .datePicker {
     display: inline-block;
+}
+
+.reservationFormSubmit {
+  position: relative;
+  right: -30.5rem;
+  margin-top: 1rem;
 }
