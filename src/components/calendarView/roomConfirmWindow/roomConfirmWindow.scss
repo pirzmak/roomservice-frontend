@@ -1,0 +1,50 @@
+@import "../../../colors.scss";
+
+.roomConfirmationWindow {
+  position: fixed;
+  top: 3rem;
+  right: 0;
+  height: calc(100% - 3rem);
+  width: 40rem;
+  padding: 0.5rem;
+  background-color: white;
+  box-shadow: -2px 8px 17px 0px $main_gray;
+}
+
+.content {
+  margin-top: 5rem;
+}
+
+.reservationForm {
+  background-color: white;
+  padding: 1rem;
+  position: relative;
+  width: 20rem;
+  text-align: initial;
+}
+
+.exitButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.rowField {
+  margin: 0.5rem;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 5rem;
+  width: 100%;
+  margin-left: -0.5rem;
+  background-color: $main_gray;
+}
+
+.save {
+  position: absolute;
+  top: calc(50% - 1.7rem);
+  right: 1rem;
+}
+
