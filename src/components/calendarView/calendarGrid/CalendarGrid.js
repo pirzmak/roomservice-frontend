@@ -31,10 +31,7 @@ class CalendarGrid extends Component {
   }
 
   componentDidMount() {
-    getAllReservations((data) => {
-      this.setState({reservations: data});
-      this.filterReservations();
-    });
+    this.loadReservations();
   }
 
   filterReservations() {
@@ -54,7 +51,15 @@ class CalendarGrid extends Component {
         selectedDate: this.state.selectedDate.add(1, 'M')
       }
     );
-    this.filterReservations()
+    this.loadReservations();
+    this.filterReservations();
+  }
+
+  loadReservations() {
+    getAllReservations((data) => {
+      this.setState({reservations: data});
+      this.filterReservations();
+    });
   }
 
   clickPrev() {
@@ -63,7 +68,8 @@ class CalendarGrid extends Component {
         selectedDate: this.state.selectedDate.add(-1, 'M')
       }
     );
-    this.filterReservations()
+    this.loadReservations();
+    this.filterReservations();
   }
 
   isWeek(i) {

@@ -89,7 +89,7 @@ class Calendar extends Component {
         <div className="calendarSide">
           <CalendarGrid showNewReservationForm={this.openReservationWindow}
                         selectedDate={this.state.clickedDate}
-                        newReservations={[]}
+                        newReservations={this.state.newReservations}
                         rooms={this.state.rooms}/>
         </div>
         {this.state.reservationWindow ? <ReservationWindow startDay={this.state.clickedDate}
