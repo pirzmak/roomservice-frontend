@@ -3,12 +3,13 @@ import React, {Component} from 'react';
 import './roomConfirmWindow.css'
 import ExitButton from "../../utils/exitButton/ExitButton";
 import MyNormal from "../../utils/myNormal/MyNormal";
+import {getRoomById} from "../calendarQueryService/RoomsQueryService";
 
 class RoomConfirmWindow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: '',
+      id: this.props.roomId.id,
       name: '',
       description: '',
       bedsNr: 0,
@@ -16,12 +17,33 @@ class RoomConfirmWindow extends Component {
       bName: '',
       bDescription: '',
       bBedsNr: 0,
-      bCost: 0,
+      bCost: 0
     };
+    getRoomById(this.props.roomId.id, (room) => console.log(room));
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  setRoom(room) {
+    this.setState({
+      id: room.aggregateId.id,
+      name: room.aggregate.info.name,
+      description: room.aggregate.info.description,
+      bedsNr: room.aggregate.bedsNr,
+      cost: room.aggregate.costPerPerson,
+      bName: room.aggregate.info.name,
+      bDescription: room.aggregate.info.description,
+      bBedsNr: room.aggregate.bedsNr,
+      bCost: room.aggregate.costPerPerson
+    })
+  }
+
   handleSubmit() {
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.roomId.id !== this.props.roomId.id) {
+      getRoomById(this.props.roomId.id, (room) => console.log(room))
+    }
   }
 
   render() {

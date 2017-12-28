@@ -35,12 +35,23 @@ class CalendarGrid extends Component {
   }
 
   filterReservations() {
+    const newReservationModel = this.state.reservations.concat(this.state.newReservations).filter(d => {
+      return moment(d.aggregate.from, "YYYY-MM-DD").isAfter(getMonthDay(this.state.selectedDate, 1)) &&
+        moment(d.aggregate.from, "YYYY-MM-DD").isBefore(this.state.selectedDate.endOf('month')) ||
+        moment(d.aggregate.to, "YYYY-MM-DD").isBefore(this.state.selectedDate.endOf('month')) &&
+        moment(d.aggregate.to, "YYYY-MM-DD").isAfter(getMonthDay(this.state.selectedDate, 1))
+    }).map(r => {
+      return {
+        'id': r.aggregateId.id,
+        'fromDay': moment(r.aggregate.from, "YYYY-MM-DD").month() !== this.state.selectedDate.month() ?
+          getMonthDay(this.state.selectedDate, 1).format("YYYY-MM-DD") : r.aggregate.from,
+        'toDay': moment(r.aggregate.to, "YYYY-MM-DD").month() !== this.state.selectedDate.month() ?
+          this.state.selectedDate.endOf('month').format("YYYY-MM-DD") : r.aggregate.to,
+        'roomId': r.aggregate.roomId,
+        'clientInfo': r.aggregate.clientInfo}});
     this.setState(
       {
-        reservationsViewModel: this.state.reservations.concat(this.state.newReservations).filter(d => {
-          return moment(d.aggregate.from, "YYYY-MM-DD").isAfter(getMonthDay(this.state.selectedDate, 1))
-            && moment(d.aggregate.to, "YYYY-MM-DD").isBefore(this.state.selectedDate.endOf('month'))
-        })
+        reservationsViewModel: newReservationModel
       }
     )
   }
@@ -51,7 +62,6 @@ class CalendarGrid extends Component {
         selectedDate: this.state.selectedDate.add(1, 'M')
       }
     );
-    this.loadReservations();
     this.filterReservations();
   }
 
@@ -68,7 +78,6 @@ class CalendarGrid extends Component {
         selectedDate: this.state.selectedDate.add(-1, 'M')
       }
     );
-    this.loadReservations();
     this.filterReservations();
   }
 
@@ -117,10 +126,11 @@ class CalendarGrid extends Component {
           </tbody>
         </table>
 
-        {this.props.rooms.length > 0 ? this.state.reservationsViewModel.map((r, i) => <ReservationRect key={r.aggregateId.id}
-                                                                                                       reservation={r.aggregate}
-                                                                                                       aggregateId={r.aggregteId}
-                                                                                                       aggregateVersion={r.aggegateVersion}/>) : null}
+        {this.props.rooms.length > 0 ? this.state.reservationsViewModel.map((r, i) => <ReservationRect key={r.id}
+                                                                                                       fromDay={r.fromDay}
+                                                                                                       toDay={r.toDay}
+                                                                                                       roomId={r.roomId}
+                                                                                                       clientInfo={r.clientInfo}/>) : null}
 
       </div>
     );

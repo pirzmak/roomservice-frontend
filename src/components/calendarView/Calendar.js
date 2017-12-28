@@ -96,9 +96,7 @@ class Calendar extends Component {
                                                            closeReservationWindow={this.closeReservationWindow}
                                                            addNewReservation={this.addNewReservation}/> : null}
 
-        {this.state.roomConfirmWindow ? <RoomConfirmWindow startDay={this.state.clickedDate}
-                                                           closeReservationWindow={this.closeReservationWindow}
-                                                           addNewReservation={this.addNewReservation}/> : null}
+        {this.state.roomConfirmWindow ? <RoomConfirmWindow roomId={this.state.selectedRoom.aggregateId}/> : null}
       </div>
     );
   }

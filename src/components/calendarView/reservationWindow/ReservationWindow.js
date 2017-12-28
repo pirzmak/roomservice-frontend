@@ -27,25 +27,25 @@ class ReservationWindow extends Component {
     this.setState({value: event.target.value});
   }
 
-    handleSubmit(event) {
-        const dateFormat = 'YYYY-MM-DD';
-        const reservation = {
-            from: this.state.startDate.local().format(dateFormat),
-            to: this.state.endDate.local().format(dateFormat),
-            clientInfo: {
-                firstName: this.state.fName,
-                lastName: this.state.lName,
-                email: this.state.email,
-                phone: this.state.phone,
-                personalData: null
-            },
-            roomId: {id: Number(this.state.roomId)},
-            discount: null
-        };
-        const tmp = Math.random();
-        this.props.addNewReservation(reservation,tmp);
-        event.preventDefault();
-    }
+  handleSubmit(event) {
+    const dateFormat = 'YYYY-MM-DD';
+    const reservation = {
+      from: this.state.startDate.local().format(dateFormat),
+      to: this.state.endDate.local().format(dateFormat),
+      clientInfo: {
+        firstName: this.state.fName,
+        lastName: this.state.lName,
+        email: this.state.email,
+        phone: this.state.phone,
+        personalData: null
+      },
+      roomId: {id: Number(this.state.roomId)},
+      discount: null
+    };
+    const tmp = Math.random();
+    this.props.addNewReservation(reservation, tmp);
+    event.preventDefault();
+  }
 
 
   render() {
