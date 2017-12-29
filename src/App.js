@@ -3,8 +3,7 @@ import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
 
 import ReservationPage from "./pages/ReservationPage";
@@ -17,7 +16,7 @@ class App extends Component {
     return (
       <Router>
         <div className="">
-          <Route exact path="/" component={ReservationPage}/>
+          <Route exact path="/reservations" component={ReservationPage}/>
         </div>
       </Router>
     );

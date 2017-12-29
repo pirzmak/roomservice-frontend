@@ -4,13 +4,7 @@ import Room from '../room/Room'
 
 import './rooms.css'
 
-import {changeRoomInfo,changeBedsNr,changeRoomCost,deleteRoom,activeRoom} from "../calendarCommandService/RoomsCommandService";
-
 class Rooms extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="rooms">

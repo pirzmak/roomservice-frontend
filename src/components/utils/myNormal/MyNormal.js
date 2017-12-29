@@ -3,10 +3,6 @@ import React, {Component} from 'react';
 import './myNormal.css'
 
 class MyNormal extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>

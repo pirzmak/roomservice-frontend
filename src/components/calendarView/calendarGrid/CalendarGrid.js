@@ -36,10 +36,10 @@ class CalendarGrid extends Component {
 
   filterReservations() {
     const newReservationModel = this.state.reservations.concat(this.state.newReservations).filter(d => {
-      return moment(d.aggregate.from, "YYYY-MM-DD").isAfter(getMonthDay(this.state.selectedDate, 1)) &&
-        moment(d.aggregate.from, "YYYY-MM-DD").isBefore(this.state.selectedDate.endOf('month')) ||
-        moment(d.aggregate.to, "YYYY-MM-DD").isBefore(this.state.selectedDate.endOf('month')) &&
-        moment(d.aggregate.to, "YYYY-MM-DD").isAfter(getMonthDay(this.state.selectedDate, 1))
+      return (moment(d.aggregate.from, "YYYY-MM-DD").isAfter(getMonthDay(this.state.selectedDate, 1)) &&
+        moment(d.aggregate.from, "YYYY-MM-DD").isBefore(this.state.selectedDate.endOf('month'))) ||
+        (moment(d.aggregate.to, "YYYY-MM-DD").isBefore(this.state.selectedDate.endOf('month')) &&
+        moment(d.aggregate.to, "YYYY-MM-DD").isAfter(getMonthDay(this.state.selectedDate, 1)))
     }).map(r => {
       return {
         'id': r.aggregateId.id,
