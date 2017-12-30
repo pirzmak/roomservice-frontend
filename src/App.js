@@ -9,6 +9,7 @@ import {
 import ReservationPage from "./pages/ReservationPage";
 
 import './App.css'
+import RoomsPage from "./pages/RoomsPage";
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
       <Router>
         <div className="">
           <Route exact path="/reservations" component={ReservationPage}/>
+          <Route exact path="/rooms" component={RoomsPage}/>
         </div>
       </Router>
     );
