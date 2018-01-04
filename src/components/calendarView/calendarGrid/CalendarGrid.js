@@ -5,7 +5,7 @@ import CalendarRect from '../calendarRect/CalendarRect'
 import ReservationRect from '../reservationRect/ReservationRect'
 import NextPrevButton from '../../utils/nextprevButton/NextPrevButton'
 
-import {getAllReservations} from "../calendarQueryService/ReservationsQueryService"
+import {getAllReservations} from "../../../services/queryServices/ReservationsQueryService"
 
 import './calendarGrid.css'
 

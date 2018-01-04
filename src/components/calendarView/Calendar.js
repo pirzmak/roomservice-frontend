@@ -6,8 +6,8 @@ import Rooms from './rooms/Rooms'
 import ReservationWindow from './reservationWindow/ReservationWindow'
 import RoomConfirmWindow from './roomConfirmWindow/RoomConfirmWindow'
 
-import {getAllRooms} from "./calendarQueryService/RoomsQueryService";
-import {createNewReservation} from "./calendarQueryService/ReservationsQueryService"
+import {getAllRooms} from "../../services/queryServices/RoomsQueryService";
+import {createNewReservation} from "../../services/queryServices/ReservationsQueryService"
 
 import './calendar.css'
 

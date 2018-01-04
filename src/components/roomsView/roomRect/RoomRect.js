@@ -21,7 +21,8 @@ class RoomRect extends Component {
       <div className="roomRectOuter" onClick={() => this.props.handleClick(this.props.room)}>
         <div className="roomRectInner">
           <div className="roomRectInfo">
-            <span className="roomRectLabel">Id:</span><span className="roomRectValue"> {this.props.room.aggregateId.id}</span>
+            <span className="roomRectLabel">Id:</span>{ this.props.room.aggregateId ?
+            <span className="roomRectValue"> {this.props.room.aggregateId.id}</span> : ""}
             <span className="roomRectLabel">Standart:</span><span className="roomRectValue"> {this.props.room.aggregate.bedsNr}</span>
             <span className="roomRectLabel">Cena:</span><span className="roomRectValue"> {this.props.room.aggregate.costPerPerson}</span>
             <div className="roomRectOtherInfo">

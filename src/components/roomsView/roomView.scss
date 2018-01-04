@@ -16,4 +16,14 @@
   .valueMyNormal{
     font-size: 1.1rem;
   }
+
+  .newRoomButton {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+
+    &.left {
+      right: 43rem;
+    }
+  }
 }

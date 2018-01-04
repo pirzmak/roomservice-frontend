@@ -13,7 +13,12 @@ class MyNormal extends Component {
                     value={this.props.value}
                     onChange={(event) => this.props.onChange(event.target.value)}/> :
           <input className="input" type={this.props.type} value={this.props.value}
-                 onChange={(event) => this.props.onChange(event.target.value)}/>
+                 onChange={(event) => {
+                   if(this.props.type === "number")
+                    this.props.onChange(parseInt(event.target.value));
+                   else
+                     this.props.onChange(event.target.value);
+                 }}/>
          : "" }
       </div>
     );
