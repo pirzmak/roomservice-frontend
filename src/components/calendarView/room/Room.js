@@ -15,7 +15,7 @@ class Room extends Component {
         <div className="roomInner">
           <div className="roomInfo">
             <span className="roomLabel">Id: {this.getRoomId(this.props.room)}</span>
-            <span className="roomLabel">Standart: {this.props.room.aggregate.bedsNr}</span>
+            <span className="roomLabel">Liczba miejsc: {this.props.room.aggregate.bedsNr}</span>
           </div>
         </div>
       </div>
