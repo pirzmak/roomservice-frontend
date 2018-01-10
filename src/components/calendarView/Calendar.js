@@ -17,6 +17,7 @@ class Calendar extends Component {
     this.state = {
       reservationWindow: false,
       clickedDate: now(),
+      selectedReservation: null,
       rooms: [],
       newReservations: [],
       roomConfirmWindow: false,
@@ -37,18 +38,19 @@ class Calendar extends Component {
     });
   }
 
-  openReservationWindow(date) {
+  openReservationWindow(date,reservationId) {
     this.setState(
       {
         reservationWindow: true,
         roomConfirmWindow: false,
+        selectedReservation: reservationId,
         clickedDate: date
       }
     );
   }
 
   closeReservationWindow() {
-    this.setState({reservationWindow: false});
+    this.setState({reservationWindow: false, selectedReservation: null});
   }
 
   openRoomConfirmWindow(roomId) {
@@ -93,6 +95,7 @@ class Calendar extends Component {
                         rooms={this.state.rooms}/>
         </div>
         {this.state.reservationWindow ? <ReservationWindow startDay={this.state.clickedDate}
+                                                           reservationId={this.state.selectedReservation}
                                                            closeReservationWindow={this.closeReservationWindow}
                                                            addNewReservation={this.addNewReservation}/> : null}
 

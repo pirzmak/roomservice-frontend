@@ -96,7 +96,7 @@ class ReservationRect extends Component {
   render() {
     const {connectDragSource, isDragging} = this.props;
     return connectDragSource(
-      <div className="reservationRect" style={{
+      <div onClick={() => this.props.handleClick(null,this.props.reservationId)} className="reservationRect" style={{
         opacity: isDragging ? 0.5 : 1,
         width: this.state.width,
         height: this.state.height,

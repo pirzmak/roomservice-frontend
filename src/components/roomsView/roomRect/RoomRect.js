@@ -24,7 +24,8 @@ class RoomRect extends Component {
             <span className="roomRectLabel">Id:</span>{ this.props.room.aggregateId ?
             <span className="roomRectValue"> {this.props.room.aggregateId.id}</span> : ""}
             <span className="roomRectLabel">Standart:</span><span className="roomRectValue"> {this.props.room.aggregate.bedsNr}</span>
-            <span className="roomRectLabel">Cena:</span><span className="roomRectValue"> {this.props.room.aggregate.costPerPerson}</span>
+            <span className="roomRectLabel">Cena:</span><span className="roomRectValue">
+            {this.props.room.aggregate.costPerPerson.amount} {this.props.room.aggregate.costPerPerson.currency} </span>
             <div className="roomRectOtherInfo">
               <span className="roomRectLabel">Inne informacje</span>
               <MyNormal label={"Nazwa"} value={this.getRoomName(this.props.room)} type={"text"} readOnly={true}/>

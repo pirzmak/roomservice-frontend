@@ -127,10 +127,12 @@ class CalendarGrid extends Component {
         </table>
 
         {this.props.rooms.length > 0 ? this.state.reservationsViewModel.map((r, i) => <ReservationRect key={i}
+                                                                                                       reservationId={r.id}
                                                                                                        fromDay={r.fromDay}
                                                                                                        toDay={r.toDay}
                                                                                                        roomId={r.roomId}
-                                                                                                       clientInfo={r.clientInfo}/>) : null}
+                                                                                                       clientInfo={r.clientInfo}
+                                                                                                       handleClick={this.props.showNewReservationForm}/>) : null}
 
       </div>
     );

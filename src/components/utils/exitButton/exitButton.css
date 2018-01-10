@@ -1,2 +1,4 @@
 .exitButton {
-  cursor: pointer; }
+  cursor: pointer;
+  font-weight: bold;
+  color: white; }
