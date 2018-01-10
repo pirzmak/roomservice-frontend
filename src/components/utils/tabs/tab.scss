@@ -1,0 +1,22 @@
+@import "../../../colors.scss";
+
+.tab {
+  width: 14rem;
+  height: 3rem;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  padding-top: 0.5rem;
+}
+
+
+.tab:hover {
+  color: $main_light;
+  border: 1px solid $main_light;
+  cursor: pointer;
+}
+
+.active {
+  background-color: $main_gray;
+}

@@ -1,44 +1,46 @@
 @import "../../../colors.scss";
 
 .reservationWindow {
-    position: fixed;
-    top: 3rem;
-    width: calc(100% - 2rem);
-    padding: 10rem 20rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    vertical-align: middle;
-    text-align: -webkit-center;
+  position: fixed;
+  top: 3rem;
+  width: calc(100% - 2rem);
+  padding: 10rem 20rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  vertical-align: middle;
+  text-align: -webkit-center;
 }
 
 .reservationFormHeader {
-    background-color: $main_gray;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    left: 0;
-    padding: 0.5rem;
+  background-color: $main_gray;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  padding: 1rem;
+  font-weight: bold;
+  color: white;
+  cursor: default;
 }
 
-.reservationFormContent{
-  margin-top: 3rem;
+.reservationFormContent {
+  margin-top: 3.5rem;
 }
 
 .reservationForm {
-    background-color: white;
-    padding: 1rem;
-    position: relative;
-    width: 40rem;
-    text-align: initial;
+  background-color: white;
+  padding: 1rem;
+  position: relative;
+  width: 45rem;
+  text-align: initial;
 }
 
 .reservationFormLabel {
-    display: inline-block;
-    width: 10rem;
-    margin-right: 0.5rem;
+  display: inline-block;
+  width: 3rem;
 }
 
 .reservationFormInput {
-  width: calc(100% - 11rem);
+  width: 100%;
   border: 1px solid #A9B7C0;
   padding: 0.4em 0.5em;
   margin-bottom: 0.2rem;
@@ -49,14 +51,43 @@
 .reservationFormDate {
   padding: 0.4em 0.5em;
   margin-bottom: 0.2rem;
+  width: 12rem;
+}
+
+.datePickerInner {
+  display: inline-block;
 }
 
 .datePicker {
-    display: inline-block;
+  display: inline-block;
 }
 
 .reservationFormSubmit {
   position: relative;
-  right: -30.5rem;
+  right: -36rem;
   margin-top: 1rem;
+}
+
+.rowDate {
+  display: inline-block;
+}
+
+.dateReservation {
+  width: 100%;
+  margin: 0.3rem 0;
+}
+
+.rightDateReservation {
+  float: right;
+}
+
+.reservationFormTerminLabel {
+  width: 100%;
+}
+
+.reservationDateGlyph{
+  width: 4rem;
+  padding: 0.9rem 0;
+  position: relative;
+  top: -0.1rem;
 }

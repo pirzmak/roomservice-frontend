@@ -3,10 +3,6 @@ import React, {Component} from 'react';
 import './room.css'
 
 class Room extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   getRoomId(room) {
     if(room.aggregate.info !== undefined && room.aggregate.info.name !== "")
       return room.aggregate.info.name;
@@ -19,7 +15,7 @@ class Room extends Component {
         <div className="roomInner">
           <div className="roomInfo">
             <span className="roomLabel">Id: {this.getRoomId(this.props.room)}</span>
-            <span className="roomLabel">Standart: {this.props.room.aggregate.bedsNr}</span>
+            <span className="roomLabel">Liczba miejsc: {this.props.room.aggregate.bedsNr}</span>
           </div>
         </div>
       </div>

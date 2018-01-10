@@ -1,0 +1,41 @@
+@import "../../../colors.scss";
+
+.roomRectOuter {
+  padding: 0.8rem;
+  cursor: pointer;
+  float: left;
+}
+
+.roomRectInner {
+  width: 20rem;
+  height: 25rem;
+  background-color: $main_mint;
+  border-radius: 3px;
+}
+
+.roomRectInfo {
+  padding: 2rem;
+}
+
+.roomRectLabel {
+  display: inline-block;
+  color: gray;
+  font-weight: bold;
+  width: 13rem;
+}
+
+.roomRectValue {
+  float: right;
+  color: gray;
+  display: inline-block;
+}
+
+.roomRectOtherInfo {
+  margin-top: 2rem;
+
+  .roomRectLabel {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid gray;
+    width: 100%;
+  }
+}

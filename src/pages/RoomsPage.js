@@ -4,9 +4,9 @@ import HeaderComponent from '../components/HeaderComponent'
 
 import './loginPage.css'
 import '../App.css'
-import Calendar from "../components/calendarView/Calendar";
+import RoomView from "../components/roomsView/RoomView";
 
-class ReservationPage extends Component {
+class RoomsPage extends Component {
   handleClick(path) {
     this.props.history.push(path);
   }
@@ -16,11 +16,11 @@ class ReservationPage extends Component {
       <div className="pageContainer">
         <HeaderComponent location = {this.props.location.pathname} handleClick = {this.handleClick.bind(this)}/>
         <div className="pageContent">
-          <Calendar/>
+          <RoomView/>
         </div>
       </div>
     );
   }
 }
 
-export default ReservationPage;
+export default RoomsPage;

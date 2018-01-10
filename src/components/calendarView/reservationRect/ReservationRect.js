@@ -23,24 +23,20 @@ class ReservationRect extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      aggregateId: this.props.aggregateId,
-      aggregateVersion: this.props.aggregateVersion,
-      reservation: this.props.reservation,
+      fromDay: this.props.fromDay,
+      toDay: this.props.toDay,
+      roomId: this.props.roomId
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.reservation !== this.props.reservation) {
-      this.setState({reservation: this.props.reservation});
-      this.setPositions();
+    if (nextProps.fromDay !== this.props.fromDay) {
+      this.setState({
+        fromDay: nextProps.fromDay},() => this.setPositions());
     }
-    if (nextProps.aggregateId !== this.props.aggregateId) {
-      this.setState({aggregateId: this.props.aggregateId});
-      this.setPositions();
-    }
-    if (nextProps.aggregateVersion !== this.props.aggregateVersion) {
-      this.setState({aggregateVersion: this.props.aggregateVersion});
-      this.setPositions();
+    if (nextProps.toDay !== this.props.toDay) {
+      this.setState({
+        toDay: nextProps.toDay},() => this.setPositions());
     }
   }
 
@@ -60,10 +56,10 @@ class ReservationRect extends Component {
   setPositions(){
     if(this.state)
     this.setState({
-      left: this.calcLeft(this.state.reservation.from, this.state.reservation.roomId.id),
-      top: this.calcTop(this.state.reservation.from, this.state.reservation.roomId.id),
-      width: this.calcWidth(this.state.reservation.from, this.state.reservation.to, this.state.reservation.roomId.id),
-      height: this.calcHeight(this.state.reservation.from, this.state.reservation.roomId.id)
+      left: this.calcLeft(this.state.fromDay, this.state.roomId.id),
+      top: this.calcTop(this.state.fromDay, this.state.roomId.id),
+      width: this.calcWidth(this.state.fromDay, this.state.toDay, this.state.roomId.id),
+      height: this.calcHeight(this.state.fromDay, this.state.roomId.id)
     })
   }
 
@@ -100,13 +96,13 @@ class ReservationRect extends Component {
   render() {
     const {connectDragSource, isDragging} = this.props;
     return connectDragSource(
-      <div className="reservationRect" style={{
+      <div onClick={() => this.props.handleClick(null,this.props.reservationId)} className="reservationRect" style={{
         opacity: isDragging ? 0.5 : 1,
         width: this.state.width,
         height: this.state.height,
         top: this.state.top,
         left: this.state.left
-      }}><PersonInfo personInfo={this.props.reservation.clientInfo}/>
+      }}><PersonInfo personInfo={this.props.clientInfo}/>
       </div>
     );
   }
