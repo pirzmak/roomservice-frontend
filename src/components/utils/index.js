@@ -12,3 +12,4 @@ export function now() {
 export function getMonthDay(date, day) {
   return moment(date.year() + "-" + (date.month() + 1) + "-" + day, "YYYY-MM-DD");
 }
+

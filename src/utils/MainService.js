@@ -7,6 +7,7 @@ export function getMethod(url, onSuccess) {
 }
 
 export function postMethod(url, body, onSuccess) {
+  body.organizationId = {id: 0};
   fetch(API + url, {
     method: 'post',
     headers: {

@@ -1,3 +1,9 @@
+.prevButton {
+  float: left; }
+
+.nextButton {
+  float: right; }
+
 .calendarTable {
   border: 1px solid lightgray;
   -webkit-box-sizing: border-box;
@@ -14,7 +20,8 @@
 
 .calendarCell {
   border-right: 1px solid lightgray;
-  text-align: center; }
+  text-align: center;
+  width: 1rem; }
 
 .calendarMonth {
   text-align: center;
@@ -31,3 +38,34 @@
   height: 2rem;
   background-color: red;
   position: absolute; }
+
+.calendarGridOptions {
+  margin-top: 1rem; }
+
+.calendarGridOptionsRight {
+  float: right; }
+
+.calendarGridOptionsRow {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #a9b7c0;
+  border-radius: 3px;
+  margin: 0 1rem;
+  color: white; }
+
+.calendarGridOptionsRowButton {
+  box-shadow: 0 5px 0px #737373;
+  cursor: pointer;
+  transition: all ease 0.3s; }
+
+.calendarGridOptionsRowButton:active {
+  box-shadow: 0 3px 0 #a9b7c0;
+  top: 3px; }
+
+.active {
+  box-shadow: 0 3px 0 #a9b7c0; }
+
+.calendarDatePicker {
+  display: inline-block;
+  color: black;
+  margin-left: 1rem; }

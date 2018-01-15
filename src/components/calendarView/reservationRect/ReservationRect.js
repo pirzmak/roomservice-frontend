@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {moment} from '../../utils/index'
 import {ItemTypes} from '../../Constants';
 import {DragSource} from 'react-dnd';
 import PersonInfo from "../../utils/personInfo/PersonInfo";
@@ -95,13 +96,16 @@ class ReservationRect extends Component {
 
   render() {
     const {connectDragSource, isDragging} = this.props;
+    const colors = ["#a24057","#606692","#3a85a8","#42977e","#4aaa54","#629363","#7e6e85","#9c509b", "#c4625d",
+                    "#eb751f","#ff9709","#ffc81d","#fff830","#e1c62f","#ad5a36","#cc6a6f","#e086b5","#bc8fa7"];
     return connectDragSource(
       <div onClick={() => this.props.handleClick(null,this.props.reservationId)} className="reservationRect" style={{
         opacity: isDragging ? 0.5 : 1,
         width: this.state.width,
         height: this.state.height,
         top: this.state.top,
-        left: this.state.left
+        left: this.state.left,
+        backgroundColor: colors[(moment(this.props.fromDay).day()+moment(this.props.fromDay).daysInMonth()+this.state.roomId.id)%colors.length]
       }}><PersonInfo personInfo={this.props.clientInfo}/>
       </div>
     );

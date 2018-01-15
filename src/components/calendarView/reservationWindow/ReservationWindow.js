@@ -57,22 +57,38 @@ class ReservationWindow extends Component {
 
   handleSubmit(event) {
     const dateFormat = 'YYYY-MM-DD';
-    const reservation = {
-      from: this.state.startDate.local().format(dateFormat),
-      to: this.state.endDate.local().format(dateFormat),
-      clientInfo: {
-        firstName: this.state.fName,
-        lastName: this.state.lName,
-        email: this.state.email,
-        phone: this.state.phone,
-        personalData: null
-      },
-      roomId: {id: Number(this.state.roomId)},
-      discount: null
-    };
-    const tmp = Math.random();
-    this.props.addNewReservation(reservation, tmp);
-    event.preventDefault();
+    if(!this.state.reservationId) {
+      const reservation = {
+        from: this.state.startDate.local().format(dateFormat),
+        to: this.state.endDate.local().format(dateFormat),
+        clientInfo: {
+          firstName: this.state.fName,
+          lastName: this.state.lName,
+          email: this.state.email,
+          phone: this.state.phone,
+          personalData: null
+        },
+        roomId: {id: Number(this.state.roomId)},
+        discount: null
+      };
+      const tmp = Math.random();
+      this.props.addNewReservation(reservation, tmp);
+      event.preventDefault();
+    } else {
+      const reservation = {
+        from: this.state.startDate.local().format(dateFormat),
+        to: this.state.endDate.local().format(dateFormat),
+        clientInfo: {
+          firstName: this.state.fName,
+          lastName: this.state.lName,
+          email: this.state.email,
+          phone: this.state.phone,
+          personalData: null
+        },
+        roomId: {id: Number(this.state.roomId)},
+        discount: null
+      };
+    }
   }
 
 
@@ -101,13 +117,13 @@ class ReservationWindow extends Component {
               <label className="reservationFormLabel">Telefon:</label>
               <input type="text" value={this.state.phone}
                      className="reservationFormInput"
-                     onChange={(event) => this.setState({lName: event.target.value})}/>
+                     onChange={(event) => this.setState({phone: event.target.value})}/>
             </div>
             <div>
               <label className="reservationFormLabel">Mail:</label>
               <input type="text" value={this.state.email}
                      className="reservationFormInput"
-                     onChange={(event) => this.setState({lName: event.target.value})}/>
+                     onChange={(event) => this.setState({email: event.target.value})}/>
             </div>
             <div className="dateReservation">
               <label className="reservationFormTerminLabel">Termin:</label>
