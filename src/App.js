@@ -6,10 +6,11 @@ import {
   Route
 } from 'react-router-dom';
 
-import ReservationPage from "./pages/ReservationPage";
+import CalendarPage from "./pages/CalendarPage";
+import RoomsPage from "./pages/RoomsPage";
+import ReservationsPage from "./pages/ReservationsPage";
 
 import './App.css'
-import RoomsPage from "./pages/RoomsPage";
 
 
 class App extends Component {
@@ -17,7 +18,8 @@ class App extends Component {
     return (
       <Router>
         <div className="">
-          <Route exact path="/reservations" component={ReservationPage}/>
+          <Route exact path="/calendar" component={CalendarPage}/>
+          <Route exact path="/reservations" component={ReservationsPage}/>
           <Route exact path="/rooms" component={RoomsPage}/>
         </div>
       </Router>

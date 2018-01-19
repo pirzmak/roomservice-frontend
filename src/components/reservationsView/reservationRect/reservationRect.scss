@@ -1,0 +1,52 @@
+@import "../../../colors.scss";
+
+.reservationRectOuter {
+  padding: 0.5rem;
+  cursor: pointer;
+
+  .reservationRectInner {
+    background-color: $main_mint;
+    padding: 1rem;
+    border: 2px solid $main_mint;
+    border-radius: 3px;
+
+    .reservationRectInfo {
+      .rightContent{
+        float: right;
+      }
+
+      .reservationRectLabel {
+        display: inline-block;
+        color: gray;
+        margin-right: 1rem;
+      }
+
+      .reservationRectValue {
+        color: gray;
+        display: inline-block;
+        margin-right: 3rem;
+        width: 7rem;
+      }
+
+      .reservationRectStatus {
+        font-weight: bold;
+        width: 10rem;
+
+        &.error {
+          color: red;
+        }
+      }
+
+      .roomRectOtherInfo {
+        margin-top: 2rem;
+
+        .roomRectLabel {
+          margin-bottom: 1rem;
+          border-bottom: 1px solid gray;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+}

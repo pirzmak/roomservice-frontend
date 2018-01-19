@@ -1,0 +1,60 @@
+@import "../../../colors.scss";
+
+.reservationConfirmationWindow {
+  position: fixed;
+  top: 3rem;
+  right: 0;
+  height: calc(100% - 3rem);
+  width: 60rem;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: -2px 8px 17px 0px $main_gray;
+}
+
+.inputHalf{
+  display: inline-block;
+}
+
+.labelReservationConfirm{
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.right {
+  float: right;
+}
+
+.reservationConfirmationRow{
+  border-bottom: 1px solid;
+  padding: 1rem;
+
+  .rowContent{
+    padding: 0 1rem;
+  }
+
+  .rowContentColumn{
+    display: inline-block;
+    width: 50%;
+    padding: 0 0.5rem;
+
+    .reservationFormLabel, .reservationFormInput{
+      display: inline-block;
+    }
+
+    .reservationFormLabel{
+      width: 40%;
+    }
+
+    .reservationFormInput{
+      width: 60%;
+    }
+  }
+
+  .reservationFormTitle{
+    display: block;
+  }
+}
+
+
+

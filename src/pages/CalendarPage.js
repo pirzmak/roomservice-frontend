@@ -6,7 +6,7 @@ import './loginPage.css'
 import '../App.css'
 import Calendar from "../components/calendarView/Calendar";
 
-class ReservationPage extends Component {
+class CalendarPage extends Component {
   handleClick(path) {
     this.props.history.push(path);
   }
@@ -23,4 +23,4 @@ class ReservationPage extends Component {
   }
 }
 
-export default ReservationPage;
+export default CalendarPage;

@@ -7,11 +7,10 @@ class HeaderComponent extends Component {
     return (
       <div className="headerComponent">
         <div className="tabs">
-          <Tab label={"Kalendarz"} isActive={this.props.location === "/reservations"} onClick={this.props.handleClick} path={"/reservations"}/>
-          <Tab label={"Rezerwacje"} isActive={this.props.location === "/rooms"} onClick={this.props.handleClick} path={"/rooms"}/>
+          <Tab label={"Kalendarz"} isActive={this.props.location === "/calendar"} onClick={this.props.handleClick} path={"/calendar"}/>
+          <Tab label={"Rezerwacje"} isActive={this.props.location === "/reservations"} onClick={this.props.handleClick} path={"/reservations"}/>
           <Tab label={"Pokoje"} isActive={this.props.location === "/rooms"} onClick={this.props.handleClick} path={"/rooms"}/>
         </div>
-        <div></div>
       </div>
     );
   }
