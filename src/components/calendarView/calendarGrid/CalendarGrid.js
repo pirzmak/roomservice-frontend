@@ -11,7 +11,6 @@ import {getAllReservations} from "../../../services/queryServices/ReservationsQu
 import './calendarGrid.css'
 
 
-
 class CalendarGrid extends Component {
   constructor(props) {
     super(props);
@@ -90,8 +89,20 @@ class CalendarGrid extends Component {
     return moment(this.state.from.year() + "-" + (this.state.from.month() + 1) + "-" + (1), "YYYY-MM-DD").add(i, 'd').isoWeekday() > 5;
   }
 
+  isToday(i) {
+    return moment(this.state.from.year() + "-" + (this.state.from.month() + 1) + "-" + (1), "YYYY-MM-DD").add(i, 'd').isSame(now(), 'day');
+  }
+
   copyDateFrom(){
     return moment(this.state.from.year() + "-" + (this.state.from.month() + 1) + "-" + (this.state.from.date()));
+  }
+
+  error(reservation) {
+    if(moment(reservation.date).add(7, "d").isAfter(now())) {
+      return "Brak Zaliczki"
+    } else if(moment(reservation.from).isAfter(now())) {
+      return "Brak Zamelowania"
+    } else return null
   }
 
   render() {
@@ -173,14 +184,14 @@ class CalendarGrid extends Component {
           </tr>
           <tr>
             {[...Array(this.state.to.diff(this.state.from, 'days') + 1)].map((x, i) => {
-              return <th className={"calendarCell calendarDay " + (this.isWeek(i) ? "weekDay" : "")} key={i}>
+              return <th className={"calendarCell calendarDay" + (this.isWeek(i) ? " weekDay" : "") + (this.isToday(i) ? " today" : "")} key={i}>
                 {this.copyDateFrom().add(i, 'd').format("dd")}
               </th>
             })}
           </tr>
           <tr className="calendarRow">
             {[...Array(this.state.to.diff(this.state.from, 'days') + 1)].map((x, i) => {
-              return <th className={"calendarCell calendarDay " + (this.isWeek(i) ? "weekDay" : "")} key={i}>
+              return <th className={"calendarCell calendarDay" + (this.isWeek(i) ? " weekDay" : "") + (this.isToday(i) ? " today" : "")} key={i}>
                 {this.copyDateFrom().add(i, 'd').date()}
               </th>
             })}
@@ -188,7 +199,7 @@ class CalendarGrid extends Component {
           {this.props.rooms.map((room, j) => {
               return <tr key={j} className="calendarRow">
                 {[...Array(this.state.to.diff(this.state.from, 'days') + 1)].map((x, i) =>
-                  <th key={i} className={"calendarCell calendarDay " + (this.isWeek(i) ? "weekDay" : "")} id={"calendarRect_" + room.aggregateId.id + "_" + this.copyDateFrom().add(i, 'd').format("YYYY-MM-DD")}>
+                  <th key={i} className={"calendarCell calendarDay" + (this.isWeek(i) ? " weekDay" : "")  + (this.isToday(i) ? " today" : "")} id={"calendarRect_" + room.aggregateId.id + "_" + this.copyDateFrom().add(i, 'd').format("YYYY-MM-DD")}>
                     <CalendarRect key={i}
                                   handleClick={this.props.showNewReservationForm}
                                   day={this.copyDateFrom().add(i, 'd')}/>
@@ -206,6 +217,7 @@ class CalendarGrid extends Component {
                                                                                                        toDay={r.toDay}
                                                                                                        roomId={r.roomId}
                                                                                                        clientInfo={r.clientInfo}
+                                                                                                       error = {this.error(r)}
                                                                                                        handleClick={this.props.showNewReservationForm}/>) : null}
 
       </div>

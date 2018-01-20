@@ -1,17 +1,19 @@
 .roomOuter {
   padding: 0.8rem;
   cursor: pointer; }
-
-.roomInner {
-  width: 100%;
-  height: 6rem;
-  background-color: #C7D8C6;
-  display: inline-block;
-  border-radius: 3px; }
-
-.roomInfo {
-  padding: 1rem; }
-
-.roomLabel {
-  font-size: 1.3rem;
-  display: block; }
+  .roomOuter .roomInner {
+    width: 100%;
+    height: 6rem;
+    background-color: #C7D8C6;
+    display: inline-block;
+    border-radius: 3px; }
+    .roomOuter .roomInner .roomInfo {
+      padding: 1rem; }
+    .roomOuter .roomInner .roomLabel, .roomOuter .roomInner .roomValue {
+      font-size: 1.3rem;
+      display: inline-block;
+      color: gray; }
+    .roomOuter .roomInner .roomLabel {
+      width: 60%; }
+    .roomOuter .roomInner .roomValue {
+      float: right; }

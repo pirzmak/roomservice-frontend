@@ -18,6 +18,9 @@
 .weekDay {
   background-color: #d3d3d354; }
 
+.today {
+  background-color: #efd9c1; }
+
 .calendarCell {
   border-right: 1px solid lightgray;
   text-align: center;
@@ -25,7 +28,8 @@
 
 .calendarMonth {
   text-align: center;
-  padding: 0.5rem; }
+  padding: 0.5rem;
+  border-bottom: 1px solid lightgray; }
 
 .calendarRow {
   width: max-content;

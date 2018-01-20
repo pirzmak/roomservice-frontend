@@ -1,3 +1,5 @@
+@import "../../../colors.scss";
+
 .prevButton {
   float: left;
 }
@@ -19,6 +21,10 @@
   background-color: #d3d3d354;
 }
 
+.today {
+  background-color: $main_light;
+}
+
 
 .calendarCell {
   border-right: 1px solid lightgray;
@@ -32,6 +38,7 @@
 .calendarMonth {
   text-align: center;
   padding: 0.5rem;
+  border-bottom: 1px solid lightgray;
 }
 
 .calendarRow {

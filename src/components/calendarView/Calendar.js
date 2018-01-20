@@ -30,6 +30,8 @@ class Calendar extends Component {
     this.addNewReservationConfirm = this.addNewReservationConfirm.bind(this);
 
     this.openRoomConfirmWindow = this.openRoomConfirmWindow.bind(this);
+    this.closeRoomConfirmWindow = this.closeRoomConfirmWindow.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
@@ -81,6 +83,10 @@ class Calendar extends Component {
         r.aggregateId.id === tmp ? {aggregateId: {id: id}, aggegateVersion: r.aggegateVersion, aggregate: r.aggregate} : r)});
   }
 
+  onChange(room) {
+    this.setState({rooms: this.state.rooms.map(r => r.aggregateId.id === room.aggregateId.id ? room : r), roomConfirmWindow: false})
+  }
+
   render() {
     return (
       <div className="calendar">
@@ -99,7 +105,10 @@ class Calendar extends Component {
                                                            closeReservationWindow={this.closeReservationWindow}
                                                            addNewReservation={this.addNewReservation}/> : null}
 
-        {this.state.roomConfirmWindow ? <RoomConfirmWindow roomId={this.state.selectedRoom.aggregateId}/> : null}
+        {this.state.roomConfirmWindow ? <RoomConfirmWindow newRoom={false}
+                                                           roomId={this.state.selectedRoom.aggregateId}
+                                                           onChange = {this.onChange}
+                                                           close={this.closeRoomConfirmWindow}/> : null}
       </div>
     );
   }

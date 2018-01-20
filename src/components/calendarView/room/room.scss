@@ -3,21 +3,32 @@
 .roomOuter {
   padding: 0.8rem;
   cursor: pointer;
+
+  .roomInner {
+    width: 100%;
+    height: 6rem;
+    background-color: $main_mint;
+    display: inline-block;
+    border-radius: 3px;
+
+    .roomInfo {
+      padding: 1rem;
+    }
+
+    .roomLabel, .roomValue {
+      font-size: 1.3rem;
+      display: inline-block;
+      color: gray;
+    }
+
+    .roomLabel {
+      width: 60%;
+    }
+
+    .roomValue {
+      float: right;
+    }
+  }
 }
 
-.roomInner {
-  width: 100%;
-  height: 6rem;
-  background-color: $main_mint;
-  display: inline-block;
-  border-radius: 3px;
-}
 
-.roomInfo {
-  padding: 1rem;
-}
-
-.roomLabel {
-  font-size: 1.3rem;
-  display: block;
-}

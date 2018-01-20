@@ -23,7 +23,6 @@
 }
 
 .reservationFormContent {
-  margin-top: 3.5rem;
 }
 
 .reservationForm {
@@ -31,35 +30,32 @@
   padding: 1rem;
   position: relative;
   width: 45rem;
+  height: 51rem;
   text-align: initial;
-}
 
-.reservationFormLabel {
-  display: inline-block;
-  width: 3rem;
-}
+  .reservationTabs{
+    margin-top: 4rem;
+    margin-bottom: 1rem;
 
-.reservationFormInput {
-  width: 100%;
-  border: 1px solid #A9B7C0;
-  padding: 0.4em 0.5em;
-  margin-bottom: 0.2rem;
-  position: relative;
-  text-align: initial;
-}
+    .reservationTab {
+      display: inline-block;
+      width: 30%;
+      padding: 0.5rem;
+      text-align: center;
+      border: 1px solid gray;
+      margin-right: 0.2rem;
+      cursor: pointer;
 
-.reservationFormDate {
-  padding: 0.4em 0.5em;
-  margin-bottom: 0.2rem;
-  width: 12rem;
-}
+      &.activeTab{
+        background-color: $main_gray;
+      }
 
-.datePickerInner {
-  display: inline-block;
-}
+      &:hover{
+        background-color: $main_powder;
+      }
 
-.datePicker {
-  display: inline-block;
+    }
+  }
 }
 
 .reservationFormSubmit {
