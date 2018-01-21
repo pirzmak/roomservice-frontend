@@ -8,6 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './reservationWindow.css'
 import ExitButton from "../../utils/exitButton/ExitButton";
 import ReservationInfo from "./components/ReservationInfo";
+import ReservationLoan from "./components/ReservationLoan";
 
 class ReservationWindow extends Component {
   constructor(props) {
@@ -25,6 +26,22 @@ class ReservationWindow extends Component {
   componentDidMount() {
     if(this.state.reservationId) {
       this.loadReservation(this.state.reservationId)
+    } else {
+      this.setState({
+        reservation: {
+          from: now().local().format("YYYY-MM-DD"),
+          to:  now().local().format("YYYY-MM-DD"),
+          clientInfo: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            personalData: null
+          },
+          roomId: {id: Number(0)},
+          discount: null
+        }
+      })
     }
   }
 
@@ -57,11 +74,10 @@ class ReservationWindow extends Component {
   }
 
   handleSubmit(event) {
-    const dateFormat = 'YYYY-MM-DD';
     if(!this.state.reservationId) {
       const reservation = {
-        from: this.state.reservation.from.local().format(dateFormat),
-        to: this.state.reservation.to.local().format(dateFormat),
+        from: this.state.reservation.from,
+        to: this.state.reservation.to,
         clientInfo: {
           firstName: this.state.reservation.clientInfo.firstName,
           lastName: this.state.reservation.clientInfo.lastName,
@@ -74,21 +90,21 @@ class ReservationWindow extends Component {
       };
       const tmp = Math.random();
       this.props.addNewReservation(reservation, tmp);
-      event.preventDefault();
     } else {
       const reservation = {
-        from: this.state.reservation.from.local().format(dateFormat),
-        to: this.state.reservation.to.local().format(dateFormat),
+        from: this.state.reservation.from,
+        to: this.state.reservation.to,
         clientInfo: {
-          firstName: this.state.reservation.clientInfo.fName,
-          lastName: this.state.reservation.clientInfo.lName,
+          firstName: this.state.reservation.clientInfo.firstName,
+          lastName: this.state.reservation.clientInfo.lastName,
           email: this.state.reservation.clientInfo.email,
           phone: this.state.reservation.clientInfo.phone,
           personalData: null
         },
-        roomId: {id: Number(this.state.reservation.roomId)},
+        roomId: {id: Number(this.state.reservation.roomId.id)},
         discount: null
       };
+      event.preventDefault();
     }
   }
 
@@ -102,9 +118,12 @@ class ReservationWindow extends Component {
             <span className="reservationFormHeaderLabel">Add new reservation</span>
           </div>
           <div className="reservationTabs">
-            <div className={"reservationTab" + (this.state.tab === 'INFO' ? " activeTab" : "")}>Informacje</div>
-            <div className={"reservationTab" + (this.state.tab === 'LOAN' ? " activeTab" : "")}>Zaliczka</div>
-            <div className={"reservationTab" + (this.state.tab === 'BOOKED' ? " activeTab" : "")}>Zameldowanie</div>
+            {this.state.reservationId ?
+              <div className={"reservationTab" + (this.state.tab === 'INFO' ? " activeTab" : "")} onClick={() => this.setState({tab: 'INFO'})}>Informacje</div> : ""}
+            {this.state.reservationId ?
+              <div className={"reservationTab" + (this.state.tab === 'LOAN' ? " activeTab" : "")} onClick={() => this.setState({tab: 'LOAN'})}>Zaliczka</div> : ""}
+            {this.state.reservationId ?
+              <div className={"reservationTab" + (this.state.tab === 'BOOKED' ? " activeTab" : "")} onClick={() => this.setState({tab: 'BOOKED'})}>Zameldowanie</div> : ""}
           </div>
           <div className="reservationFormContent">
             {this.state.tab === 'INFO' ? <ReservationInfo   handleChange = {this.handleChange}
@@ -117,6 +136,9 @@ class ReservationWindow extends Component {
                                                             startDate = {this.state.reservation ? moment(this.state.reservation.from, "YYYY-MM-DD") : now()}
                                                             endDate = {this.state.reservation ? moment(this.state.reservation.to, "YYYY-MM-DD") : now()}
                                                             version = {this.state.reservation ? this.state.version : ''}/> : ""}
+            {this.state.tab === 'LOAN' ? <ReservationLoan   handleChange = {this.handleChange}
+                                                            value = {this.state.reservation && this.state.loan ? this.state.reservation.loan.money.amount : 0}
+                                                            date = {this.state.reservation && this.state.loan  ? moment(this.state.reservation.loan.date, "YYYY-MM-DD") : now()}/> : ""}
             <input type="submit" value="Submit" className="reservationFormSubmit btn btn-default"/>
           </div>
         </form>

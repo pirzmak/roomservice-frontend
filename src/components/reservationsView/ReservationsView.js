@@ -30,12 +30,12 @@ class ReservationView extends Component {
     });
   }
 
-  openReservationConfirmWindow(roomId) {
+  openReservationConfirmWindow(reservationId) {
     this.setState(
       {
         reservationConfirmWindow: true,
         newReservation: false,
-        selectedReservation: roomId
+        selectedReservation: reservationId
       }
     );
   }
@@ -61,7 +61,8 @@ class ReservationView extends Component {
             <ReservationRect key={i} reservation={x} handleClick={this.openReservationConfirmWindow} onChange={this.onChange}/>
           )}
         </div>
-        {this.state.reservations[0] ? <ReservationConfirmWindow reservationId={this.state.reservations[0].aggregateId}/> : ""}
+        {this.state.reservationConfirmWindow ? <ReservationConfirmWindow reservationId={this.state.selectedReservation} close={this.closeReservationConfirmWindow}/> :
+          <div className="emptyReservation">Wybierz rezerwację</div>}
       </div>
     );
   }

@@ -9,9 +9,19 @@
   z-index: 10;
   padding: 0 2rem;
   border-bottom: 4px solid $main_gray;
+
+  .userOptions{
+    float: right;
+
+    .glyphicon {
+      font-size: 2.5rem;
+      top: 0.5rem;
+    }
+  }
 }
 
 .tabs{
   position: absolute;
   bottom: 0;
 }
+

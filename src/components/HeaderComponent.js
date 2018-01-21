@@ -11,6 +11,9 @@ class HeaderComponent extends Component {
           <Tab label={"Rezerwacje"} isActive={this.props.location === "/reservations"} onClick={this.props.handleClick} path={"/reservations"}/>
           <Tab label={"Pokoje"} isActive={this.props.location === "/rooms"} onClick={this.props.handleClick} path={"/rooms"}/>
         </div>
+        <div className="userOptions">
+          <span className="glyphicon glyphicon-user"></span>
+        </div>
       </div>
     );
   }

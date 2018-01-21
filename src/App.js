@@ -11,6 +11,7 @@ import RoomsPage from "./pages/RoomsPage";
 import ReservationsPage from "./pages/ReservationsPage";
 
 import './App.css'
+import LoginPage from "./pages/LoginPage";
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
     return (
       <Router>
         <div className="">
+          <Route exact path="/" component={LoginPage}/>
           <Route exact path="/calendar" component={CalendarPage}/>
           <Route exact path="/reservations" component={ReservationsPage}/>
           <Route exact path="/rooms" component={RoomsPage}/>

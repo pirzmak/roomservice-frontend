@@ -18,8 +18,7 @@ class ReservationInfo extends Component {
       phone: props.reservationId ? props.phone : '',
       roomId: props.reservationId ? props.roomId : '',
       startDate: props.reservationId ? props.startDate : now(),
-      endDate:  props.reservationId ? props.endDate : now(),
-      tab: 'INFO'
+      endDate:  props.reservationId ? props.endDate : now()
     };
 
     this.toReservationInfo = this.toReservationInfo.bind(this);
@@ -56,9 +55,10 @@ class ReservationInfo extends Component {
   }
 
   toReservationInfo() {
+    const dateFormat = 'YYYY-MM-DD';
     return {
-      from: this.state.startDate,
-      to: this.state.endDate,
+      from: this.state.startDate.local().format(dateFormat),
+      to: this.state.endDate.local().format(dateFormat),
       clientInfo: {
         firstName: this.state.fName,
         lastName: this.state.lName,

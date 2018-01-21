@@ -41,6 +41,7 @@ class ReservationConfirmWindow extends Component {
       date : moment(data.date, "YYYY-MM-DD"),
       clientInfo: data.clientInfo,
       loan: l,
+      roomId: data.roomId
     }
   }
 
@@ -102,30 +103,38 @@ class ReservationConfirmWindow extends Component {
           <div className="reservationConfirmationWindowContent">
             <div className="reservationConfirmationRow">
               <label className="reservationFormTitle">Dane klienta</label>
-            <div className="rowContent">
-              <label className="reservationFormLabel">Imię:</label>
-              <input type="text" value={this.state.reservation.clientInfo.firstName}
-                     className="reservationFormInput"
-                     onChange={(event) => this.setState({fName: event.target.value})}/>
+              <div className="rowContent">
+                <label className="reservationFormLabel">Imię:</label>
+                <input type="text" value={this.state.reservation.clientInfo.firstName}
+                       className="reservationFormInput"
+                       onChange={(event) => this.setState({reservation: {clientInfo: { firstName : event.target.value}}})}/>
+              </div>
+              <div className="rowContent">
+                <label className="reservationFormLabel">Nazwisko:</label>
+                <input type="text" value={this.state.reservation.clientInfo.lastName}
+                       className="reservationFormInput"
+                       onChange={(event) => this.setState({reservation: {clientInfo: { lastName : event.target.value}}})}/>
+              </div>
+              <div className="rowContent">
+                <label className="reservationFormLabel">Telefon:</label>
+                <input type="text" value={this.state.reservation.clientInfo.phone}
+                       className="reservationFormInput"
+                       onChange={(event) => this.setState({reservation: {clientInfo: { phone : event.target.value}}})}/>
+              </div>
+              <div className="rowContent">
+                <label className="reservationFormLabel">Mail:</label>
+                <input type="text" value={this.state.reservation.clientInfo.email}
+                       className="reservationFormInput"
+                       onChange={(event) => this.setState({reservation: {clientInfo: { email : event.target.value}}})}/>
+              </div>
             </div>
-            <div className="rowContent">
-              <label className="reservationFormLabel">Nazwisko:</label>
-              <input type="text" value={this.state.reservation.clientInfo.lastName}
-                     className="reservationFormInput"
-                     onChange={(event) => this.setState({lName: event.target.value})}/>
-            </div>
-            <div className="rowContent">
-              <label className="reservationFormLabel">Telefon:</label>
-              <input type="text" value={this.state.reservation.clientInfo.phone}
-                     className="reservationFormInput"
-                     onChange={(event) => this.setState({phone: event.target.value})}/>
-            </div>
-            <div className="rowContent">
-              <label className="reservationFormLabel">Mail:</label>
-              <input type="text" value={this.state.reservation.clientInfo.email}
-                     className="reservationFormInput"
-                     onChange={(event) => this.setState({email: event.target.value})}/>
-            </div>
+            <div className="reservationConfirmationRow">
+              <div className="rowContent">
+                <label className="reservationFormLabel">Pokój:</label>
+                <input type="text" value={this.state.reservation.roomId.id}
+                       className="reservationFormInput"
+                       onChange={(event) => this.setState({roomId: {id: event.target.value}})}/>
+              </div>
             </div>
             <div className="reservationConfirmationRow">
               <label className="reservationFormTitle">Termin</label>

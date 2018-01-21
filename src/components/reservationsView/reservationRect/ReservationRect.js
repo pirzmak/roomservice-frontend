@@ -26,7 +26,7 @@ class ReservationRect extends Component {
 
   render() {
     return (
-      <div className="reservationRectOuter" onClick={() => this.props.handleClick(this.props.room)}>
+      <div className="reservationRectOuter" onClick={() => this.props.handleClick(this.props.reservation.aggregateId)}>
         <div className="reservationRectInner">
           <div className="reservationRectInfo">
             <span className="reservationRectLabel">Id:</span>
