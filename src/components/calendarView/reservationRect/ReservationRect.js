@@ -105,7 +105,7 @@ class ReservationRect extends Component {
         height: this.state.height,
         top: this.state.top,
         left: this.state.left,
-        backgroundColor: colors[(moment(this.props.fromDay).day()+moment(this.props.fromDay).daysInMonth()+this.state.roomId.id)%colors.length]
+        backgroundColor: colors[(moment(this.props.fromDay).day()+moment(this.props.fromDay).daysInMonth()+this.state.roomId.id - 5)%colors.length]
       }}><PersonInfo personInfo={this.props.clientInfo}/>
         {this.props.error ? <div>{this.props.error}</div> : ""}
       </div>

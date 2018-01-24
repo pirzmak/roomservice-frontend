@@ -10,6 +10,3 @@ export function getReservationById(id, onSuccess) {
   getMethod(link + "get-by-id/" + + id, onSuccess)
 }
 
-export function createNewReservation(reservation, onSuccess) {
-    postMethod(link + "create", reservation, onSuccess)
-}

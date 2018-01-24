@@ -74,36 +74,25 @@ class ReservationWindow extends Component {
   }
 
   handleSubmit(event) {
+    const reservation = {
+      from: this.state.reservation.from,
+      to: this.state.reservation.to,
+      clientInfo: {
+        firstName: this.state.reservation.clientInfo.firstName,
+        lastName: this.state.reservation.clientInfo.lastName,
+        email: this.state.reservation.clientInfo.email,
+        phone: this.state.reservation.clientInfo.phone,
+        personalData: null
+      },
+      roomId: {id: Number(this.state.reservation.roomId.id)},
+      discount: null
+    };
+
     if(!this.state.reservationId) {
-      const reservation = {
-        from: this.state.reservation.from,
-        to: this.state.reservation.to,
-        clientInfo: {
-          firstName: this.state.reservation.clientInfo.firstName,
-          lastName: this.state.reservation.clientInfo.lastName,
-          email: this.state.reservation.clientInfo.email,
-          phone: this.state.reservation.clientInfo.phone,
-          personalData: null
-        },
-        roomId: {id: Number(this.state.reservation.roomId.id)},
-        discount: null
-      };
       const tmp = Math.random();
       this.props.addNewReservation(reservation, tmp);
     } else {
-      const reservation = {
-        from: this.state.reservation.from,
-        to: this.state.reservation.to,
-        clientInfo: {
-          firstName: this.state.reservation.clientInfo.firstName,
-          lastName: this.state.reservation.clientInfo.lastName,
-          email: this.state.reservation.clientInfo.email,
-          phone: this.state.reservation.clientInfo.phone,
-          personalData: null
-        },
-        roomId: {id: Number(this.state.reservation.roomId.id)},
-        discount: null
-      };
+      this.props.updateReservation(reservation, this.props.reservationId);
       event.preventDefault();
     }
   }

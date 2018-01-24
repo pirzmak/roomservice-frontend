@@ -107,7 +107,7 @@ class ReservationConfirmWindow extends Component {
                 <label className="reservationFormLabel">Imię:</label>
                 <input type="text" value={this.state.reservation.clientInfo.firstName}
                        className="reservationFormInput"
-                       onChange={(event) => this.setState({reservation: {clientInfo: { firstName : event.target.value}}})}/>
+                       onChange={(event) => {} /*this.setState({reservation: {clientInfo: { firstName : event.target.value}}})*/}/>
               </div>
               <div className="rowContent">
                 <label className="reservationFormLabel">Nazwisko:</label>
@@ -119,13 +119,13 @@ class ReservationConfirmWindow extends Component {
                 <label className="reservationFormLabel">Telefon:</label>
                 <input type="text" value={this.state.reservation.clientInfo.phone}
                        className="reservationFormInput"
-                       onChange={(event) => this.setState({reservation: {clientInfo: { phone : event.target.value}}})}/>
+                       onChange={(event) => {} /*this.setState({reservation: {clientInfo: { phone : event.target.value}}})*/}/>
               </div>
               <div className="rowContent">
                 <label className="reservationFormLabel">Mail:</label>
                 <input type="text" value={this.state.reservation.clientInfo.email}
                        className="reservationFormInput"
-                       onChange={(event) => this.setState({reservation: {clientInfo: { email : event.target.value}}})}/>
+                       onChange={(event) => {} /*this.setState({reservation: {clientInfo: { email : event.target.value}}})*/}/>
               </div>
             </div>
             <div className="reservationConfirmationRow">
@@ -133,7 +133,7 @@ class ReservationConfirmWindow extends Component {
                 <label className="reservationFormLabel">Pokój:</label>
                 <input type="text" value={this.state.reservation.roomId.id}
                        className="reservationFormInput"
-                       onChange={(event) => this.setState({roomId: {id: event.target.value}})}/>
+                       onChange={(event) => {} /*this.setState({reservation: {roomId: {id: event.target.value}}})*/}/>
               </div>
             </div>
             <div className="reservationConfirmationRow">

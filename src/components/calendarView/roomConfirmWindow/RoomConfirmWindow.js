@@ -113,23 +113,23 @@ class RoomConfirmWindow extends Component {
               {this.state.id ? <MyNormal label={"Id"} value={this.state.id.id} type={"text"} readOnly={true}/> : ""}
             </div>
             <div className="rowField">
-              <MyNormal label={"Name"} value={this.state.name} type={"text"}
+              <MyNormal label={"Nazwa"} value={this.state.name} type={"text"}
                         onChange={(value) => this.setState({name: value})}/>
             </div>
             <div className="rowField">
-              <MyNormal label={"Description"} value={this.state.description} textArea={true}
+              <MyNormal label={"Opis"} value={this.state.description} textArea={true}
                         onChange={(value) => this.setState({description: value})}/>
             </div>
             <div className="rowField">
-              <MyNormal label={"Standart"} value={this.state.bedsNr} type={"number"}
+              <MyNormal label={"Liczba miejsc"} value={this.state.bedsNr} type={"number"}
                         onChange={(value) => this.setState({bedsNr: value})}/>
             </div>
             <div className="rowField">
-              <MyNormal label={"Price"} value={this.state.cost} type={"number"}
+              <MyNormal label={"Cena za dobę"} value={this.state.cost} type={"number"}
                         onChange={(value) => this.setState({cost: value})}/>
             </div>
             <div className="footer">
-              <input className="save btn btn-default" type="submit" value="Submit"/>
+              <input className="save btn btn-default" type="submit" value="Zapisz"/>
             </div>
           </div>
         </form>
