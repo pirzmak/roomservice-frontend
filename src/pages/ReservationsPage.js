@@ -4,7 +4,6 @@ import HeaderComponent from '../components/HeaderComponent'
 
 import './loginPage.css'
 import '../App.css'
-import RoomView from "../components/roomsView/RoomView";
 import ReservationView from "../components/reservationsView/ReservationsView";
 import {ToastContainer} from "react-toastify";
 

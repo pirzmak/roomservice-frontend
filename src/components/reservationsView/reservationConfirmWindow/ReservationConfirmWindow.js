@@ -46,38 +46,10 @@ class ReservationConfirmWindow extends Component {
   }
 
   handleSubmit(event) {
-    // event.preventDefault();
-    // if (!this.state.newRoom) {
-    //   if (this.state.bName !== this.state.name || this.state.bDescription !== this.state.description) {
-    //     changeRoomInfo(this.state.id, this.state.version, this.state.name, this.state.description, (data) => {
-    //     });
-    //     this.setState({version: this.state.version.version + 1}, () => this.props.onChange(this.makeRoom()));
-    //   }
-    //   if (this.state.bBedsNr !== this.state.bedsNr) {
-    //     changeBedsNr(this.state.id, this.state.version, this.state.bedsNr, (data) => {
-    //     });
-    //     this.setState({version: this.state.version.version + 1}, () => this.props.onChange(this.makeRoom()));
-    //   }
-    //   if (this.state.cost !== this.state.bCost) {
-    //     changeRoomCost(this.state.id, this.state.version, this.state.cost, (data) => {
-    //     });
-    //     this.setState({version: this.state.version.version + 1}, () => this.props.onChange(this.makeRoom()));
-    //   }
-    // } else {
-    //   createNewRoom({name: this.state.name, description: this.state.description}, this.state.bedsNr, this.state.cost,
-    //     (data) => {
-    //       this.setState({
-    //         id: data.aggregateId,
-    //         version: data.aggegateVersion
-    //       }, () => this.props.onChange(this.makeRoom()));
-    //     });
-    //   this.props.addNewRoom(this.makeRoom());
-    // }
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.state.reservationId && nextProps.reservationId.id !== this.props.reservationId.id) {
-     // getRoomById(this.props.roomId.id, (room) => this.setRoom(room))
     }
     if (this.state.newReservation) {
       this.setState({

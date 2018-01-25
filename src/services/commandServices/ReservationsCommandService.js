@@ -1,4 +1,4 @@
-import {getMethod, postMethod} from "../../utils/MainService";
+import {postMethod} from "../../utils/MainService";
 
 const link = "reservations/";
 

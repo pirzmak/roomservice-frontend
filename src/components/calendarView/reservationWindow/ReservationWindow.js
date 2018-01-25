@@ -118,7 +118,6 @@ class ReservationWindow extends Component {
 
 
   render() {
-    let container;
     return (
       <div className="reservationWindow">
         <form onSubmit={this.handleSubmit} className="reservationForm">

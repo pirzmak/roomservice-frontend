@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import RoomConfirmWindow from '../calendarView/roomConfirmWindow/RoomConfirmWindow'
-
 import {getAllReservations} from "../../services/queryServices/ReservationsQueryService";
 
 import './reservationsView.css'

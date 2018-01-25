@@ -25,18 +25,6 @@ class ReservationInfo extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.roomId !== this.props.roomId) {
-      this.setState({roomId: nextProps.roomId});
-    }
-    if (nextProps.startDate !== this.props.startDate) {
-      this.setState({startDate: nextProps.startDate});
-    }
-    if (nextProps.endDate !== this.props.endDate) {
-      this.setState({endDate: nextProps.endDate});
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
     if (nextProps.reservationId !== this.props.reservationId) {
       this.setState({reservationId: nextProps.reservationId});
     }

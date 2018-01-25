@@ -7,12 +7,16 @@ import Rooms from './rooms/Rooms'
 import ReservationWindow from './reservationWindow/ReservationWindow'
 import RoomConfirmWindow from './roomConfirmWindow/RoomConfirmWindow'
 
-import { ToastContainer, toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 import {getAllRooms} from "../../services/queryServices/RoomsQueryService";
 import {getAllReservations} from "../../services/queryServices/ReservationsQueryService"
 import {
-  createNewReservation, changeReservationDate,
-  changeReservationClientInfo, changeReservationRoom, changeReservationLoan, changeReservationDiscount
+  changeReservationClientInfo,
+  changeReservationDate,
+  changeReservationDiscount,
+  changeReservationLoan,
+  changeReservationRoom,
+  createNewReservation
 } from "../../services/commandServices/ReservationsCommandService"
 
 import './calendar.css'

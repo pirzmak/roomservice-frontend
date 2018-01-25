@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import './myNormal.css'
 
 class MyNormal extends Component {
+  radix;
   render() {
     return (
       <div>
@@ -15,7 +16,7 @@ class MyNormal extends Component {
           <input className="input" type={this.props.type} value={this.props.value}
                  onChange={(event) => {
                    if(this.props.type === "number")
-                    this.props.onChange(parseInt(event.target.value));
+                    this.props.onChange(parseInt(event.target.value, this.radix));
                    else
                      this.props.onChange(event.target.value);
                  }}/>
