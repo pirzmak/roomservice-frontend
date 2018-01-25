@@ -205,6 +205,7 @@ class CalendarGrid extends Component {
                       className={"calendarCell calendarDay" + (this.isWeek(i) ? " weekDay" : "") + (this.isToday(i) ? " today" : "")}
                       id={"calendarRect_" + room.aggregateId.id + "_" + this.copyDateFrom().add(i, 'd').format("YYYY-MM-DD")}>
                     <CalendarRect key={i}
+                                  roomId = {room.aggregateId}
                                   handleClick={this.props.showNewReservationForm}
                                   day={this.copyDateFrom().add(i, 'd')}/>
                   </th>

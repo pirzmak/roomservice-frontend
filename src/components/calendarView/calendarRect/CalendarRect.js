@@ -10,7 +10,7 @@ class CalendarRect extends Component {
 
   render() {
     return (
-      <div className="calendarRect" onClick={() => this.props.handleClick(this.props.day,null)}>
+      <div className="calendarRect" onClick={() => this.props.handleClick(this.props.day,null,this.props.roomId)}>
         <div className="calendarRectContent">
         </div>
       </div>

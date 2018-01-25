@@ -7,6 +7,7 @@ import Rooms from './rooms/Rooms'
 import ReservationWindow from './reservationWindow/ReservationWindow'
 import RoomConfirmWindow from './roomConfirmWindow/RoomConfirmWindow'
 
+import { ToastContainer, toast } from 'react-toastify';
 import {getAllRooms} from "../../services/queryServices/RoomsQueryService";
 import {getAllReservations} from "../../services/queryServices/ReservationsQueryService"
 import {
@@ -22,6 +23,7 @@ class Calendar extends Component {
     this.state = {
       reservationWindow: false,
       clickedDate: now(),
+      roomId: null,
       selectedReservation: null,
       rooms: [],
       reservations: [],
@@ -50,13 +52,14 @@ class Calendar extends Component {
   }
 
 
-  openReservationWindow(date, reservationId) {
+  openReservationWindow(date, reservationId, roomId) {
     this.setState(
       {
         reservationWindow: true,
         roomConfirmWindow: false,
         selectedReservation: reservationId,
-        clickedDate: date
+        clickedDate: date,
+        roomId: roomId
       }
     );
   }
@@ -80,13 +83,24 @@ class Calendar extends Component {
   }
 
   addNewReservation(reservation, tmp) {
-    const reservations = this.state.reservations;
-    reservations.push({aggregateId: {id: tmp}, aggegateVersion: 1, aggregate: reservation});
-    this.setState({reservations: reservations});
-    createNewReservation(reservation, (data) => {
-      this.addNewReservationConfirm(data.id.id, tmp)
-    });
-    this.closeReservationWindow();
+    if(this.checkReservation(reservation)) {
+      const reservations = this.state.reservations;
+      reservations.push({aggregateId: {id: tmp}, aggegateVersion: 1, aggregate: reservation});
+      this.setState({reservations: reservations});
+      createNewReservation(reservation, (data) => {
+        this.addNewReservationConfirm(data.id.id, tmp)
+      });
+      this.closeReservationWindow();
+    } else {
+      toast.error("Reservation date is not empty")
+    }
+  }
+
+  checkReservation(reservation) {
+    return this.state.reservations.find(r =>
+      (r.aggregate.roomId.id === reservation.roomId.id &&
+        (moment(reservation.to, "YYYY-MM-DD").isBetween(moment(r.aggregate.from, "YYYY-MM-DD"),moment(r.aggregate.to, "YYYY-MM-DD")) ||
+          moment(reservation.from, "YYYY-MM-DD").isBetween(moment(r.aggregate.from, "YYYY-MM-DD"),moment(r.aggregate.to, "YYYY-MM-DD"))))) === undefined
   }
 
   updateReservation(reservation, reservationId) {
@@ -157,6 +171,7 @@ class Calendar extends Component {
                         rooms={this.state.rooms}/>
         </div>
         {this.state.reservationWindow ? <ReservationWindow startDay={this.state.clickedDate}
+                                                           roomId={this.state.roomId}
                                                            reservationId={this.state.selectedReservation}
                                                            closeReservationWindow={this.closeReservationWindow}
                                                            updateReservation={this.updateReservation}

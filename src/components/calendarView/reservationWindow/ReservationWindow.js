@@ -30,7 +30,7 @@ class ReservationWindow extends Component {
     } else {
       this.setState({
         reservation: {
-          from: now().local().format("YYYY-MM-DD"),
+          from: this.props.clickedDate,
           to:  now().local().format("YYYY-MM-DD"),
           clientInfo: {
             firstName: '',
@@ -39,7 +39,7 @@ class ReservationWindow extends Component {
             phone: '',
             personalData: null
           },
-          roomId: {id: Number(0)},
+          roomId: this.props.roomId,
           discount: null
         }
       })
@@ -79,6 +79,7 @@ class ReservationWindow extends Component {
   }
 
   handleSubmit(event) {
+
     const reservation = {
       from: this.state.reservation.from,
       to: this.state.reservation.to,
@@ -96,6 +97,7 @@ class ReservationWindow extends Component {
     if(!this.state.reservationId) {
       const tmp = Math.random();
       this.props.addNewReservation(reservation, tmp);
+      event.preventDefault();
     } else {
       this.props.updateReservation(reservation, this.props.reservationId);
       event.preventDefault();

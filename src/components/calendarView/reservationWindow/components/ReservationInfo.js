@@ -16,12 +16,24 @@ class ReservationInfo extends Component {
       lName: props.reservationId ? props.lName : '',
       email: props.reservationId ? props.email : '',
       phone: props.reservationId ? props.phone : '',
-      roomId: props.reservationId ? props.roomId : '',
-      startDate: props.reservationId ? props.startDate : now(),
-      endDate:  props.reservationId ? props.endDate : now()
+      roomId: props.roomId ? props.roomId : '',
+      startDate: props.startDate ? props.startDate : now(),
+      endDate:  props.endDate ? props.endDate : now()
     };
 
     this.toReservationInfo = this.toReservationInfo.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.roomId !== this.props.roomId) {
+      this.setState({roomId: nextProps.roomId});
+    }
+    if (nextProps.startDate !== this.props.startDate) {
+      this.setState({startDate: nextProps.startDate});
+    }
+    if (nextProps.endDate !== this.props.endDate) {
+      this.setState({endDate: nextProps.endDate});
+    }
   }
 
   componentWillReceiveProps(nextProps) {
