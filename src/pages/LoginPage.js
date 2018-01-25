@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import './loginPage.css'
 import '../App.css'
 import MyNormal from "../components/utils/myNormal/MyNormal";
+import {ToastContainer} from "react-toastify";
 
 class LoginPage extends Component {
   handleClick(path) {
@@ -13,6 +14,7 @@ class LoginPage extends Component {
     return (
       <div className="pageContainer">
         <div className="loginHeader">ServiceRoom</div>
+        <ToastContainer />
         <div className="pageContent">
           <div className="loginRect">
             <div className="loginRectInner">

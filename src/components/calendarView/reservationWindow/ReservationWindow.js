@@ -10,6 +10,7 @@ import ExitButton from "../../utils/exitButton/ExitButton";
 import ReservationInfo from "./components/ReservationInfo";
 import ReservationLoan from "./components/ReservationLoan";
 
+
 class ReservationWindow extends Component {
   constructor(props) {
     super(props);
@@ -68,7 +69,11 @@ class ReservationWindow extends Component {
         personalData: null
       },
       roomId: {id: reservationInfo.roomId !== undefined ? Number(reservationInfo.roomId.id) : Number(this.state.reservation.roomId.id)},
-      discount: null
+      discount: null,
+      loan: reservationInfo.loan ? {
+        money: {amount: reservationInfo.loan.money.amount,
+                currency: reservationInfo.loan.money.currency},
+        date: reservationInfo.loan.date} : this.state.reservation.loan
     };
     this.setState({reservation: reservation});
   }
@@ -99,6 +104,7 @@ class ReservationWindow extends Component {
 
 
   render() {
+    let container;
     return (
       <div className="reservationWindow">
         <form onSubmit={this.handleSubmit} className="reservationForm">

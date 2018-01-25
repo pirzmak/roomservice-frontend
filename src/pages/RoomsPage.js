@@ -5,6 +5,7 @@ import HeaderComponent from '../components/HeaderComponent'
 import './loginPage.css'
 import '../App.css'
 import RoomView from "../components/roomsView/RoomView";
+import {ToastContainer} from "react-toastify";
 
 class RoomsPage extends Component {
   handleClick(path) {
@@ -15,6 +16,7 @@ class RoomsPage extends Component {
     return (
       <div className="pageContainer">
         <HeaderComponent location = {this.props.location.pathname} handleClick = {this.handleClick.bind(this)}/>
+        <ToastContainer />
         <div className="pageContent">
           <RoomView/>
         </div>

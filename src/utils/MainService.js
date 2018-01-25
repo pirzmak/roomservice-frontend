@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from 'react-toastify';
+
 const API = "http://localhost:9000//";
 
 export function getMethod(url, onSuccess) {
@@ -6,7 +8,7 @@ export function getMethod(url, onSuccess) {
     .then(data => onSuccess(data));
 }
 
-export function postMethod(url, body, onSuccess) {
+export function postMethod(url, body, onSuccess, onError) {
   body.organizationId = {id: 0};
   fetch(API + url, {
     method: 'post',
@@ -16,5 +18,12 @@ export function postMethod(url, body, onSuccess) {
     },
     body: JSON.stringify(body)
   }).then(response => response.json())
-    .then(data => onSuccess(data));
+    .then(data => {
+
+      if(data.status.name === "FAILURE") {
+        //onError(data);
+        toast.error(data.message);
+      }
+      else onSuccess(data);
+    });
 }

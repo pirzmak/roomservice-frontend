@@ -6,6 +6,7 @@ import './loginPage.css'
 import '../App.css'
 import RoomView from "../components/roomsView/RoomView";
 import ReservationView from "../components/reservationsView/ReservationsView";
+import {ToastContainer} from "react-toastify";
 
 class ReservationsPage extends Component {
   handleClick(path) {
@@ -16,6 +17,7 @@ class ReservationsPage extends Component {
     return (
       <div className="pageContainer">
         <HeaderComponent location = {this.props.location.pathname} handleClick = {this.handleClick.bind(this)}/>
+        <ToastContainer />
         <div className="pageContent">
           <ReservationView/>
         </div>

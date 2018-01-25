@@ -12,6 +12,7 @@ import ReservationsPage from "./pages/ReservationsPage";
 
 import './App.css'
 import LoginPage from "./pages/LoginPage";
+import {ToastContainer} from "react-toastr";
 
 
 class App extends Component {
