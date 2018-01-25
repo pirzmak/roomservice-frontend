@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import CalendarPage from "./pages/CalendarPage";
 import RoomsPage from "./pages/RoomsPage";
@@ -12,7 +9,6 @@ import ReservationsPage from "./pages/ReservationsPage";
 
 import './App.css'
 import LoginPage from "./pages/LoginPage";
-import {ToastContainer} from "react-toastr";
 
 
 class App extends Component {

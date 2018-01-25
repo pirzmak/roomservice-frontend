@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
-import {now, moment} from '../../../utils/index'
+import {now} from '../../../utils/index'
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -18,7 +18,7 @@ class ReservationInfo extends Component {
       phone: props.reservationId ? props.phone : '',
       roomId: props.roomId ? props.roomId : '',
       startDate: props.startDate ? props.startDate : now(),
-      endDate:  props.endDate ? props.endDate : now()
+      endDate: props.endDate ? props.endDate : now()
     };
 
     this.toReservationInfo = this.toReservationInfo.bind(this);
@@ -79,7 +79,8 @@ class ReservationInfo extends Component {
         personalData: null
       },
       roomId: {id: Number(this.state.roomId)},
-      discount: null}
+      discount: null
+    }
   }
 
   render() {
@@ -91,7 +92,9 @@ class ReservationInfo extends Component {
                  className="reservationFormInput"
                  onChange={(event) => {
                    this.setState({fName: event.target.value},
-                     () => {this.props.handleChange(this.toReservationInfo())});
+                     () => {
+                       this.props.handleChange(this.toReservationInfo())
+                     });
                  }}/>
         </div>
         <div>
@@ -100,7 +103,9 @@ class ReservationInfo extends Component {
                  className="reservationFormInput"
                  onChange={(event) => {
                    this.setState({lName: event.target.value},
-                     () => {this.props.handleChange(this.toReservationInfo())});
+                     () => {
+                       this.props.handleChange(this.toReservationInfo())
+                     });
                  }}/>
         </div>
         <div>
@@ -109,7 +114,9 @@ class ReservationInfo extends Component {
                  className="reservationFormInput"
                  onChange={(event) => {
                    this.setState({phone: event.target.value},
-                     () => {this.props.handleChange(this.toReservationInfo())});
+                     () => {
+                       this.props.handleChange(this.toReservationInfo())
+                     });
                  }}/>
         </div>
         <div>
@@ -118,7 +125,9 @@ class ReservationInfo extends Component {
                  className="reservationFormInput"
                  onChange={(event) => {
                    this.setState({email: event.target.value},
-                     () => {this.props.handleChange(this.toReservationInfo())});
+                     () => {
+                       this.props.handleChange(this.toReservationInfo())
+                     });
                  }}/>
         </div>
         <div className="dateReservation">
@@ -132,7 +141,9 @@ class ReservationInfo extends Component {
                   className="reservationFormDate datePickerInner"
                   onChange={(date) => {
                     this.setState({startDate: date},
-                      () => {this.props.handleChange(this.toReservationInfo())});
+                      () => {
+                        this.props.handleChange(this.toReservationInfo())
+                      });
                   }}/>
               </div>
               <span className="input-group-addon datePickerInner reservationDateGlyph">
@@ -148,12 +159,14 @@ class ReservationInfo extends Component {
                             selected={this.state.endDate}
                             onChange={(date) => {
                               this.setState({endDate: date},
-                                () => {this.props.handleChange(this.toReservationInfo())});
+                                () => {
+                                  this.props.handleChange(this.toReservationInfo())
+                                });
                             }}/>
               </div>
               <span className="input-group-addon datePickerInner reservationDateGlyph">
-                        <span className="glyphicon glyphicon-calendar"></span>
-                    </span>
+                <span className="glyphicon glyphicon-calendar"></span>
+              </span>
             </div>
           </div>
         </div>
@@ -163,7 +176,9 @@ class ReservationInfo extends Component {
                  className="reservationFormInput"
                  onChange={(event) => {
                    this.setState({roomId: event.target.value},
-                     () => {this.props.handleChange(this.toReservationInfo())});
+                     () => {
+                       this.props.handleChange(this.toReservationInfo())
+                     });
                  }}/>
         </div>
       </div>

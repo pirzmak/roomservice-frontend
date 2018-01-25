@@ -58,7 +58,7 @@ class ReservationRect extends Component {
     if(this.state)
     this.setState({
       left: this.calcLeft(this.state.fromDay, this.state.roomId.id),
-      top: this.calcTop(this.state.fromDay, this.state.roomId.id),
+      top: this.calcTop(this.state.fromDay, this.state.roomId.id ),
       width: this.calcWidth(this.state.fromDay, this.state.toDay, this.state.roomId.id),
       height: this.calcHeight(this.state.fromDay, this.state.roomId.id)
     })

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {now, moment} from '../../utils/index'
+import {moment, now} from '../../utils/index'
 
 import {getReservationById} from "../../../services/queryServices/ReservationsQueryService"
 
@@ -43,6 +43,18 @@ class ReservationWindow extends Component {
           discount: null
         }
       })
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.roomId !== this.props.roomId) {
+      this.setState({roomId: nextProps.roomId});
+    }
+    if (nextProps.startDate !== this.props.startDate) {
+      this.setState({startDate: nextProps.startDate});
+    }
+    if (nextProps.endDate !== this.props.endDate) {
+      this.setState({endDate: nextProps.endDate});
     }
   }
 
@@ -127,7 +139,7 @@ class ReservationWindow extends Component {
                                                             reservationId = {this.state.reservationId}
                                                             fName = {this.state.reservation ? this.state.reservation.clientInfo.firstName : ""}
                                                             lName = {this.state.reservation ? this.state.reservation.clientInfo.lastName : ""}
-                                                            roomId = {this.state.reservation ? this.state.reservation.roomId.id : 0}
+                                                            roomId = {this.state.reservation !== null && this.state.reservation.roomId ? this.state.reservation.roomId.id : 0}
                                                             email = {this.state.reservation ? this.state.reservation.clientInfo.email : ""}
                                                             phone = {this.state.reservation ? this.state.reservation.clientInfo.phone : ""}
                                                             startDate = {this.state.reservation ? moment(this.state.reservation.from, "YYYY-MM-DD") : now()}
